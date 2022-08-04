@@ -1,0 +1,1 @@
+const REGION_SELECT = 'RegionSelect';
