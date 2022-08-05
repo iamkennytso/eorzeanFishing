@@ -4,27 +4,24 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { defaultFinalFantasyWindow } from '../styles';
 import { ANDROID } from '../const/misc'
 import { regions } from '../data/locations';
-import { AREA_SELECT } from '../const/views';
 // import { StateContext } from '../App';
 
-export default function RegionSelect({ navigation }) {
-  // const state = useContext(StateContext);
-  // console.log(navigation)
+export default function AreaSelect({ route, navigation }) {
+  const { region } = route.params;
   return <SafeAreaView style={styles.container}>
     <View style={styles.header}>
-      <Image source={require('../assets/misc/fishingSymbol.png')} />
-      <Text style={styles.headerText}>FFXIV Fishing Buddy</Text>
+      <Text style={styles.headerText}>helloWorld{region}</Text>
     </View>
-    <ScrollView>
+    {/* <ScrollView>
       {regions.map(region => <TouchableHighlight 
         key={region} 
         style={styles.areaContainer} 
         underlayColor='#5150C6' 
-        onPress={() => navigation.navigate(AREA_SELECT, {region})}
+        onPress={() => navigation.navigate('Area')}
       >
         <Text style={styles.areaText}>{region}</Text>
       </TouchableHighlight>)}
-    </ScrollView>
+    </ScrollView> */}
   </SafeAreaView>
 }
 
