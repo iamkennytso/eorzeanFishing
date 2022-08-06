@@ -366,7 +366,7 @@ export const areas = {
         n: "The Weeping Saint", l: 45, t: 0
       },
       {
-        n: "Witchdrop", l: 50, t: 0
+        n: "Witchdrop", l: 50, t: 3
       },
     ],
   },
@@ -397,15 +397,6 @@ export const areas = {
 export const poolTypes = [
   'Freshwater',
   'Saltwater',
-  'Dunefishing',
-  'Cloudfishing'
-]
-
-export const requirements = [
-  null,
-  'Gulleye I',
-  'Gulleye II',
-  'Gulleye III',
   'Dunefishing',
   'Cloudfishing'
 ]
