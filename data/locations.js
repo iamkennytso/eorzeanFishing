@@ -399,4 +399,4 @@ export const poolTypes = [
   'Saltwater',
   'Dunefishing',
   'Cloudfishing'
-]
+];
