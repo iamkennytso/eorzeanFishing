@@ -400,7 +400,3 @@ export const poolTypes = [
   'Dunefishing',
   'Cloudfishing'
 ];
-
-const getAbbreviation = region => {
-  const first = region.split(' ')
-}
