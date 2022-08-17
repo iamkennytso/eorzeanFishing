@@ -10,17 +10,17 @@ export const areas = {
   "La Noscea": {
     "Limsa Lominsa Upper Decks": [
       {
-        n: "Limsa Lominsa Upper Decks", l: 1, t: 1,
+        n: "Limsa Lominsa Upper Decks", l: 1, t: 1, id: 35
       },
     ],
     "Limsa Lominsa Lower Decks": [
       {
-        n: "Limsa Lominsa Lower Decks", l: 1, t: 1,
+        n: "Limsa Lominsa Lower Decks", l: 1, t: 1, id: 36
       },
     ],
     "Middle La Noscea": [
       {
-        n: "Rogue River", l: 1, t: 1,
+        n: "Rogue River", l: 1, t: 1, id: 39
       },
       {
         n: "West Agelyss River", l: 1, t: 0,
