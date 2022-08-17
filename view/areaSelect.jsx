@@ -45,23 +45,21 @@ export default function AreaSelect({ route }) {
   const { region } = route.params;
   const regionAreas = areas[region]
   // const [expandedIndexes, setExpandedIndexes] = useState(new Array(Object.keys(regionAreas).length))
-  return <SafeAreaView style={styles.container}>
-    <ScrollView>
-      {Object.keys(regionAreas).map(area => (
-        <LinearGradient key={area} style={styles.areaContainer} colors={['#312CD6', '#2920BD']}>
-          <SimpleAccordion 
-            title={area}
-            viewInside={areaExpandContent(regionAreas[area])}
-            titleStyle={areaTitleStyles}
-            bannerStyle={areaBannerStyles}
-            viewContainerStyle={areaExpandedContainerStyles}
-            showContentInsideOfCard={false}
-            arrowColor='white'
-          />
-        </LinearGradient>
-      ))}
-    </ScrollView>
-  </SafeAreaView>
+  return <ScrollView style={{height: '100%'}}>
+    {Object.keys(regionAreas).map(area => (
+      <LinearGradient key={area} style={styles.areaContainer} colors={['#312CD6', '#2920BD']}>
+        <SimpleAccordion 
+          title={area}
+          viewInside={areaExpandContent(regionAreas[area])}
+          titleStyle={areaTitleStyles}
+          bannerStyle={areaBannerStyles}
+          viewContainerStyle={areaExpandedContainerStyles}
+          showContentInsideOfCard={false}
+          arrowColor='white'
+        />
+      </LinearGradient>
+    ))}
+  </ScrollView>
 }
 
 const areaTitleStyles = {
