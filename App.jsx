@@ -2,9 +2,9 @@ import React, { createContext } from 'react';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { RegionSelect, AreaSelect } from './view';
+import { RegionSelect, AreaSelect, PoolView } from './view';
 
-import { AREA_SELECT, REGION_SELECT } from './const/views.js'
+import { AREA_SELECT, POOL_VIEW, REGION_SELECT } from './const/views.js'
 import { SafeAreaView, View, StyleSheet,  StatusBar as RNStatusBar, } from 'react-native';
 
 const Stack = createNativeStackNavigator();
@@ -31,6 +31,7 @@ export default function App() {
         >
           <Stack.Screen name={REGION_SELECT} component={RegionSelect} />
           <Stack.Screen name={AREA_SELECT} component={AreaSelect} />
+          <Stack.Screen name={POOL_VIEW} component={PoolView} />
         </Stack.Navigator>
       </SafeAreaView>
     </NavigationContainer>

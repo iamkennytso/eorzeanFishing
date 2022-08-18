@@ -5,8 +5,7 @@ import { areas } from '../data/locations';
 import { SimpleAccordion } from 'react-native-simple-accordion';
 import { useState } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
-
-// n: "Limsa Lominsa Upper Decks", l: 1, t: 1,
+import { POOL_VIEW } from '../const/views';
 
 const getTypeImage = type => {
   let link;
@@ -29,9 +28,12 @@ const getTypeImage = type => {
   return <Image style={styles.poolImage} source={link} />
 }
 
-const areaExpandContent = (pools) => {
+const areaExpandContent = (pools, navigation) => {
   return <View>
-    {pools.map(pool => <TouchableHighlight key={pool.n}>
+    {pools.map(pool => <TouchableHighlight 
+      key={pool.n} 
+      onPress={() => navigation.navigate(POOL_VIEW, { pool })}
+    >
       <View style={styles.poolContainer}>
         <Text style={styles.poolText}>{pool.l}</Text>
         <Text style={styles.poolText}>{pool.n}</Text>
@@ -41,16 +43,16 @@ const areaExpandContent = (pools) => {
   </View>
 }
 
-export default function AreaSelect({ route }) {
+export default function AreaSelect({ navigation, route }) {
   const { region } = route.params;
-  const regionAreas = areas[region]
-  // const [expandedIndexes, setExpandedIndexes] = useState(new Array(Object.keys(regionAreas).length))
-  return <ScrollView style={{height: '100%'}}>
+  const regionAreas = areas[region];
+
+  return <ScrollView>
     {Object.keys(regionAreas).map(area => (
       <LinearGradient key={area} style={styles.areaContainer} colors={['#312CD6', '#2920BD']}>
         <SimpleAccordion 
           title={area}
-          viewInside={areaExpandContent(regionAreas[area])}
+          viewInside={areaExpandContent(regionAreas[area], navigation)}
           titleStyle={areaTitleStyles}
           bannerStyle={areaBannerStyles}
           viewContainerStyle={areaExpandedContainerStyles}
