@@ -11,10 +11,10 @@ const getTypeImage = type => {
   let link;
   switch (type) {
     case 0:
-      link = require('../assets/fish/0102.png');
+      link = require('../assets/misc/freshwater.png');
       break;
     case 1:
-      link = require('../assets/fish/0108.png')
+      link = require('../assets/misc/saltwater.png')
       break;
     case 2:
       link = require('../assets/misc/dunefishing.png')
