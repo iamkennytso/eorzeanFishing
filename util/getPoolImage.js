@@ -256,56 +256,6 @@ export default getPoolImage = poolId => {
     //   return require('../assets/pools/128.jpg')
     case 129: 
       return require('../assets/pools/129.jpg')
-    // case 130: 
-    //   return require('../assets/pools/130.jpg')
-    // case 131: 
-    //   return require('../assets/pools/131.jpg')
-    // case 132: 
-    //   return require('../assets/pools/132.jpg')
-    // case 133: 
-    //   return require('../assets/pools/133.jpg')
-    // case 134: 
-    //   return require('../assets/pools/134.jpg')
-    // case 135: 
-    //   return require('../assets/pools/135.jpg')
-    // case 136: 
-    //   return require('../assets/pools/136.jpg')
-    // case 137: 
-    //   return require('../assets/pools/137.jpg')
-    // case 138: 
-    //   return require('../assets/pools/138.jpg')
-    // case 139: 
-    //   return require('../assets/pools/139.jpg')
-    // case 140: 
-    //   return require('../assets/pools/140.jpg')
-    // case 141: 
-    //   return require('../assets/pools/141.jpg')
-    // case 142: 
-    //   return require('../assets/pools/142.jpg')
-    // case 143: 
-    //   return require('../assets/pools/143.jpg')
-    // case 144: 
-    //   return require('../assets/pools/144.jpg')
-    // case 145: 
-    //   return require('../assets/pools/145.jpg')
-    // case 146: 
-    //   return require('../assets/pools/146.jpg')
-    // case 147: 
-    //   return require('../assets/pools/147.jpg')
-    // case 148: 
-    //   return require('../assets/pools/148.jpg')
-    // case 149: 
-    //   return require('../assets/pools/149.jpg')
-    // case 150: 
-    //   return require('../assets/pools/150.jpg')
-    // case 151: 
-    //   return require('../assets/pools/151.jpg')
-    // case 152: 
-    //   return require('../assets/pools/152.jpg')
-    // case 153: 
-    //   return require('../assets/pools/153.jpg')
-    // case 154: 
-    //   return require('../assets/pools/154.jpg')
     case 155: 
       return require('../assets/pools/155.jpg')
     case 156: 
