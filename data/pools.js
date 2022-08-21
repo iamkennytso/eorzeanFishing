@@ -1,23 +1,3 @@
-// const abbrev = data => {
-//   const shorten = name => name.split(' ').map(word => word[0].toLowerCase()).join('')
-
-//   const regions = Object.keys(data)
-//   for (let region of regions) {
-//     const first = shorten(region)
-//     const areas = Object.keys(data[region])
-//     for (let area of areas) {
-//       const second = shorten(area)
-//       const pools = data[region][area]
-//       for (let pool of pools) {
-//         const { n: name, l: level, t: type } = pool
-//         const third = `${level}${shorten(name)}${type}`
-
-//         console.log(`"${first}${second}${third}": "${name}",`)
-//       }
-//     }
-//   }
-// }
-
 export const pools = {
   1: { name: "unknown", fish: [4869, 4885, 12811, 27457, 27454, 27455, 27456, 32051] },
   2: { name: "The Vein", fish: [4925, 4927, 4932, 4934, 4935, 4936, 4952, 7705], image: '/w/images/e/ec/The_Vein-Fishing.jpg' },

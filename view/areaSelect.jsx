@@ -1,9 +1,7 @@
 // import { useContext} from 'react'
 import { StyleSheet, Text, ScrollView, TouchableHighlight, View, Image } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { areas } from '../data/locations';
 import { SimpleAccordion } from 'react-native-simple-accordion';
-import { useState } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import { POOL_VIEW } from '../const/views';
 

@@ -1,4 +1,3 @@
-// import { useContext} from 'react'
 import { View, StyleSheet, Text, Image, ScrollView, TouchableHighlight  } from 'react-native';
 import { regions } from '../data/locations';
 import { AREA_SELECT } from '../const/views';
