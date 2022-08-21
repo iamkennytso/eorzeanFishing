@@ -33,8 +33,8 @@ const areaExpandContent = (pools, navigation) => {
       onPress={() => navigation.navigate(POOL_VIEW, { pool })}
     >
       <View style={styles.poolContainer}>
-        <Text style={styles.poolText}>{pool.l}</Text>
-        <Text style={styles.poolText}>{pool.n}</Text>
+        <Text style={styles.poolLevel}>{pool.l}</Text>
+        <Text style={styles.poolName}>{pool.n}</Text>
         {getTypeImage(pool.t)}
       </View>
     </TouchableHighlight>)}
@@ -95,7 +95,12 @@ const styles = StyleSheet.create({
     paddingTop: 5,
     paddingBottom: 5
   },
-  poolText: {
+  poolLevel: {
+    color: 'white',
+    display: 'flex',
+    alignItems: 'flex-start'
+  },
+  poolName: {
     color: 'white'
   },
   poolImage: {
