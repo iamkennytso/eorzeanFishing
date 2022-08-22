@@ -1,6 +1,7 @@
 import { View, StyleSheet, Text, Image, ScrollView, TouchableHighlight  } from 'react-native';
 import { regionsData } from '../data';
 import { AREA_SELECT } from '../const/views';
+import TouchableGradient from '../components/TouchableGradient';
 
 export default function RegionSelect({ navigation }) {
 
@@ -9,15 +10,16 @@ export default function RegionSelect({ navigation }) {
       <Image source={require('../assets/misc/fishingSymbol.png')} />
       <Text style={styles.headerText}>FFXIV Fishing Buddy</Text>
     </View>
-    <ScrollView>
-      {regionsData.map(region => <TouchableHighlight 
-        key={region}
-        style={styles.regionContainer} 
-        underlayColor='#5150C6' 
-        onPress={() => navigation.navigate(AREA_SELECT, { region })}
-      >
-        <Text style={styles.regionText}>{region}</Text>
-      </TouchableHighlight>)}
+    <ScrollView style={styles.regionsContainer} >
+      {regionsData.map(region => <TouchableGradient key={region}>
+        <TouchableHighlight 
+          style={styles.regionContainer} 
+          underlayColor='#5150C6' 
+          onPress={() => navigation.navigate(AREA_SELECT, { region })}
+        >
+          <Text style={styles.regionText}>{region}</Text>
+        </TouchableHighlight>
+      </TouchableGradient>)}
     </ScrollView>
   </>
 }

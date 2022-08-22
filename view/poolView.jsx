@@ -1,12 +1,17 @@
-import { View, StyleSheet, Text, Image, ScrollView, TouchableHighlight  } from 'react-native';
+import { View, StyleSheet, Text, Image, ScrollView, TouchableHighlight } from 'react-native';
 import { FISH_VIEW } from '../const/views';
 import fishes from '../data/fishes';
 import { poolsData } from '../data';
 import getIdImage from '../util/getIdImage';
 import getPoolImage from '../util/getPoolImage';
+import TouchableGradient from '../components/TouchableGradient';
 
-export default function PoolView ({ navigation, route }) {
-  console.log('hello', poolsData)
+const customTileGradient = {
+  height: undefined,
+  aspectRatio: .90
+}
+
+export default function PoolView({ navigation, route }) {
   const { pool } = route.params;
   const { l: poolLevel, n: poolName } = pool;
   const { fish } = poolsData[pool.id]
@@ -20,24 +25,32 @@ export default function PoolView ({ navigation, route }) {
     <Text style={styles.poolNameText}>{poolName}</Text>
     <Text style={styles.poolLevelText}>Pool Level: {poolLevel}</Text>
     <View style={styles.tilesContainer}>
-      {[0,1,2,3,4].map(idx =><View style={styles.tile} key={idx}>
-          {fish[idx] ? <TouchableHighlight onPress={() => navigation.navigate(FISH_VIEW, { fish: fishes[fish[idx]] })}>
-            <View style={styles.tilesContentContainer}>
-              <Image source={getIdImage(fish[idx])} />
-              <Text style={styles.fishText}>{fishes[fish[idx]].name}</Text>
-            </View>
-          </TouchableHighlight> : null }
-        </View>
+      {[0, 1, 2, 3, 4].map(idx => <View style={styles.tile} key={idx}>
+        {fish[idx] ?
+          <TouchableHighlight styles={styles.tileTouchable} onPress={() => navigation.navigate(FISH_VIEW, { fish: fishes[fish[idx]] })}>
+            <TouchableGradient customStyles={customTileGradient}>
+              <View style={styles.tilesContentContainer}>
+                <Image source={getIdImage(fish[idx])} />
+                <Text style={styles.fishText}>{fishes[fish[idx]].name}</Text>
+              </View>
+            </TouchableGradient>
+          </TouchableHighlight>
+          : null}
+      </View>
       )}
     </View>
     {fish[5] ? <View style={styles.tilesContainer}>
-      {[5,6,7,8,9].map(idx => <View style={styles.tile} key={idx} >
-        {fish[idx] ? <TouchableHighlight onPress={() => navigation.navigate(FISH_VIEW, { fish: fishes[fish[idx]] })}>
-          <View style={styles.tilesContentContainer}>
-            <Image source={getIdImage(fish[idx])} />
-            <Text style={styles.fishText}>{fishes[fish[idx]].name}</Text>
-          </View>
-        </TouchableHighlight> : null }
+      {[5, 6, 7, 8, 9].map(idx => <View style={styles.tile} key={idx} >
+        {fish[idx] ?
+          <TouchableHighlight rstyles={styles.tileTouchable} onPress={() => navigation.navigate(FISH_VIEW, { fish: fishes[fish[idx]] })}>
+            <TouchableGradient customStyles={customTileGradient}>
+              <View style={styles.tilesContentContainer}>
+                <Image source={getIdImage(fish[idx])} />
+                <Text style={styles.fishText}>{fishes[fish[idx]].name}</Text>
+              </View>
+            </TouchableGradient>
+          </TouchableHighlight>
+          : null}
       </View>)}
     </View> : null}
   </ScrollView>
@@ -64,15 +77,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   tile: {
-    width: '15%',
+    width: '18%',
     display: 'flex',
     alignItems: 'center',
-    marginTop: '8%',
-    marginBottom: '8%'
+    marginTop: 15
   },
   tilesContentContainer: {
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   fishText: {
     color: 'white',

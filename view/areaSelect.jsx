@@ -2,8 +2,8 @@
 import { StyleSheet, Text, ScrollView, TouchableHighlight, View, Image } from 'react-native';
 import { areasData } from '../data';
 import { SimpleAccordion } from 'react-native-simple-accordion';
-import { LinearGradient } from 'expo-linear-gradient';
 import { POOL_VIEW } from '../const/views';
+import TouchableGradient from '../components/TouchableGradient';
 
 const getTypeImage = type => {
   let link;
@@ -47,7 +47,7 @@ export default function AreaSelect({ navigation, route }) {
 
   return <ScrollView>
     {Object.keys(regionAreas).map(area => (
-      <LinearGradient key={area} style={styles.areaContainer} colors={['#312CD6', '#2920BD']}>
+      <TouchableGradient key={area}>
         <SimpleAccordion 
           title={area}
           viewInside={areaExpandContent(regionAreas[area], navigation)}
@@ -57,7 +57,7 @@ export default function AreaSelect({ navigation, route }) {
           showContentInsideOfCard={false}
           arrowColor='white'
         />
-      </LinearGradient>
+      </TouchableGradient>
     ))}
   </ScrollView>
 }
@@ -75,13 +75,6 @@ const areaExpandedContainerStyles = {
 }
 
 const styles = StyleSheet.create({
-  areaContainer: {
-    paddingLeft: 10,
-    borderColor: 'black',
-    borderRadius: 15,
-    borderWidth: 1,
-    margin: 5
-  },
   areaText: {
     color: '#B1D8E0',
     fontSize: 20
