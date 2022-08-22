@@ -1,9 +1,11 @@
 // import { useContext} from 'react'
 import { StyleSheet, Text, ScrollView, TouchableHighlight, View, Image } from 'react-native';
-import { areasData } from '../data';
+import { areasData, poolsData } from '../data';
 import { SimpleAccordion } from 'react-native-simple-accordion';
 import { POOL_VIEW } from '../const/views';
 import TouchableGradient from '../components/TouchableGradient';
+import { subtitleStyles, fontColorStyle } from '../styles/styles'
+import { BLUE_FONT } from '../styles/variables';
 
 const getTypeImage = type => {
   let link;
@@ -26,18 +28,23 @@ const getTypeImage = type => {
   return <Image style={styles.poolImage} source={link} />
 }
 
-const areaExpandContent = (pools, navigation) => {
+const areaExpandContent = (poolIDs, navigation) => {
   return <View>
-    {pools.map(pool => <TouchableHighlight 
-      key={pool.n} 
-      onPress={() => navigation.navigate(POOL_VIEW, { pool })}
-    >
-      <View style={styles.poolContainer}>
-        <Text style={styles.poolLevel}>{pool.l}</Text>
-        <Text style={styles.poolName}>{pool.n}</Text>
-        {getTypeImage(pool.t)}
-      </View>
-    </TouchableHighlight>)}
+    {poolIDs.map(poolID => {
+      const poolData = poolsData[poolID]
+      const { name, level, type } = poolData
+      return <TouchableHighlight
+        key={poolID}
+        onPress={() => navigation.navigate(POOL_VIEW, { poolData, poolID })}
+        underlayColor='#5150C6'
+      >
+        <View style={styles.poolContentContainer}>
+          <Text style={fontColorStyle}>{level}</Text>
+          <Text style={fontColorStyle}>{name}</Text>
+          {getTypeImage(type)}
+        </View>
+      </TouchableHighlight>
+    })}
   </View>
 }
 
@@ -47,23 +54,21 @@ export default function AreaSelect({ navigation, route }) {
 
   return <ScrollView>
     {Object.keys(regionAreas).map(area => (
-      <TouchableGradient key={area}>
-        <SimpleAccordion 
-          title={area}
-          viewInside={areaExpandContent(regionAreas[area], navigation)}
-          titleStyle={areaTitleStyles}
-          bannerStyle={areaBannerStyles}
-          viewContainerStyle={areaExpandedContainerStyles}
-          showContentInsideOfCard={false}
-          arrowColor='white'
-        />
-      </TouchableGradient>
+      <View style={styles.poolContainer} key={area}>
+        <TouchableGradient >
+          <SimpleAccordion
+            title={area}
+            viewInside={areaExpandContent(regionAreas[area], navigation)}
+            titleStyle={subtitleStyles}
+            bannerStyle={areaBannerStyles}
+            viewContainerStyle={areaExpandedContainerStyles}
+            showContentInsideOfCard={false}
+            arrowColor={BLUE_FONT}
+          />
+        </TouchableGradient>
+      </View>
     ))}
   </ScrollView>
-}
-
-const areaTitleStyles = {
-  color: 'white'
 }
 
 const areaBannerStyles = {
@@ -75,26 +80,18 @@ const areaExpandedContainerStyles = {
 }
 
 const styles = StyleSheet.create({
-  areaText: {
-    color: '#B1D8E0',
-    fontSize: 20
-  },
   poolContainer: {
+    marginTop: 8,
+    marginBottom: 8
+  },
+  poolContentContainer: {
     paddingLeft: 15,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingTop: 5,
-    paddingBottom: 5
-  },
-  poolLevel: {
-    color: 'white',
-    display: 'flex',
-    alignItems: 'flex-start'
-  },
-  poolName: {
-    color: 'white'
+    paddingBottom: 5,
   },
   poolImage: {
     height: 32,

@@ -1,0 +1,1 @@
+export const BLUE_FONT = '#B1D8E0'

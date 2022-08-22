@@ -2,24 +2,23 @@ import { View, StyleSheet, Text, Image, ScrollView, TouchableHighlight  } from '
 import { regionsData } from '../data';
 import { AREA_SELECT } from '../const/views';
 import TouchableGradient from '../components/TouchableGradient';
+import { titleStyles, subtitleStyles } from '../styles/styles'
 
 export default function RegionSelect({ navigation }) {
-
   return <>
     <View style={styles.header}>
       <Image source={require('../assets/misc/fishingSymbol.png')} />
-      <Text style={styles.headerText}>FFXIV Fishing Buddy</Text>
+      <Text style={{ ...titleStyles, ...styles.headerText}}>FFXIV Fishing Buddy</Text>
     </View>
-    <ScrollView style={styles.regionsContainer} >
-      {regionsData.map(region => <TouchableGradient key={region}>
-        <TouchableHighlight 
-          style={styles.regionContainer} 
-          underlayColor='#5150C6' 
+    <ScrollView styles={styles.regionsContainer}>
+      {regionsData.map(region => <View key={region} style={styles.regionContainer}>
+        <TouchableGradient 
           onPress={() => navigation.navigate(AREA_SELECT, { region })}
+          customGradientStyles={styles.regionGradient}
         >
-          <Text style={styles.regionText}>{region}</Text>
-        </TouchableHighlight>
-      </TouchableGradient>)}
+          <Text style={subtitleStyles}>{region}</Text>
+        </TouchableGradient>
+      </View>)}
     </ScrollView>
   </>
 }
@@ -31,18 +30,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   headerText: {
-    fontSize: 25,
-    fontWeight: '600',
     color: 'white',
+    fontWeight: '600',
     fontFamily: 'sans-serif-condensed'
   },
   regionContainer: {
+    marginTop: 8,
+    marginBottom: 8,
+    borderRadius: 15
+  },
+  regionGradient: {
     paddingLeft: 10,
     paddingTop: 15,
     paddingBottom: 15,
-  },
-  regionText: {
-    color: '#B1D8E0',
-    fontSize: 20
   }
 });
