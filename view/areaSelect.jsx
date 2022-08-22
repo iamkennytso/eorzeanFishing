@@ -1,6 +1,6 @@
 // import { useContext} from 'react'
 import { StyleSheet, Text, ScrollView, TouchableHighlight, View, Image } from 'react-native';
-import { areas } from '../data/locations';
+import { areasData } from '../data';
 import { SimpleAccordion } from 'react-native-simple-accordion';
 import { LinearGradient } from 'expo-linear-gradient';
 import { POOL_VIEW } from '../const/views';
@@ -43,7 +43,7 @@ const areaExpandContent = (pools, navigation) => {
 
 export default function AreaSelect({ navigation, route }) {
   const { region } = route.params;
-  const regionAreas = areas[region];
+  const regionAreas = areasData[region];
 
   return <ScrollView>
     {Object.keys(regionAreas).map(area => (

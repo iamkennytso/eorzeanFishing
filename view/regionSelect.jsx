@@ -1,5 +1,5 @@
 import { View, StyleSheet, Text, Image, ScrollView, TouchableHighlight  } from 'react-native';
-import { regions } from '../data/locations';
+import { regionsData } from '../data';
 import { AREA_SELECT } from '../const/views';
 
 export default function RegionSelect({ navigation }) {
@@ -10,8 +10,8 @@ export default function RegionSelect({ navigation }) {
       <Text style={styles.headerText}>FFXIV Fishing Buddy</Text>
     </View>
     <ScrollView>
-      {regions.map(region => <TouchableHighlight 
-        key={region} 
+      {regionsData.map(region => <TouchableHighlight 
+        key={region}
         style={styles.regionContainer} 
         underlayColor='#5150C6' 
         onPress={() => navigation.navigate(AREA_SELECT, { region })}

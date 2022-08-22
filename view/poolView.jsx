@@ -1,13 +1,15 @@
 import { View, StyleSheet, Text, Image, ScrollView, TouchableHighlight  } from 'react-native';
+import { FISH_VIEW } from '../const/views';
 import fishes from '../data/fishes';
-import { pools } from '../data/pools';
+import { poolsData } from '../data';
 import getIdImage from '../util/getIdImage';
 import getPoolImage from '../util/getPoolImage';
 
 export default function PoolView ({ navigation, route }) {
+  console.log('hello', poolsData)
   const { pool } = route.params;
   const { l: poolLevel, n: poolName } = pool;
-  const { fish } = pools[pool.id]
+  const { fish } = poolsData[pool.id]
 
   const poolImageSource = getPoolImage(pool.id)
 
@@ -19,7 +21,7 @@ export default function PoolView ({ navigation, route }) {
     <Text style={styles.poolLevelText}>Pool Level: {poolLevel}</Text>
     <View style={styles.tilesContainer}>
       {[0,1,2,3,4].map(idx =><View style={styles.tile} key={idx}>
-          {fish[idx] ? <TouchableHighlight>
+          {fish[idx] ? <TouchableHighlight onPress={() => navigation.navigate(FISH_VIEW, { fish: fishes[fish[idx]] })}>
             <View style={styles.tilesContentContainer}>
               <Image source={getIdImage(fish[idx])} />
               <Text style={styles.fishText}>{fishes[fish[idx]].name}</Text>
@@ -30,7 +32,7 @@ export default function PoolView ({ navigation, route }) {
     </View>
     {fish[5] ? <View style={styles.tilesContainer}>
       {[5,6,7,8,9].map(idx => <View style={styles.tile} key={idx} >
-        {fish[idx] ? <TouchableHighlight>
+        {fish[idx] ? <TouchableHighlight onPress={() => navigation.navigate(FISH_VIEW, { fish: fishes[fish[idx]] })}>
           <View style={styles.tilesContentContainer}>
             <Image source={getIdImage(fish[idx])} />
             <Text style={styles.fishText}>{fishes[fish[idx]].name}</Text>

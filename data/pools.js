@@ -1,4 +1,4 @@
-export const pools = {
+export default pools = {
   1: { name: "unknown", fish: [4869, 4885, 12811, 27457, 27454, 27455, 27456, 32051] },
   2: { name: "The Vein", fish: [4925, 4927, 4932, 4934, 4935, 4936, 4952, 7705], image: '/w/images/e/ec/The_Vein-Fishing.jpg' },
   3: { name: "The Mirror", fish: [4929, 4932, 4934, 4935, 4936, 4947, 4951, 7700], image: '/w/images/0/0c/The_Mirror-Fishing.jpg'},
