@@ -14,7 +14,7 @@ export default fishes = {
     level: 3,
     iconURL: "/i/029000/029003_hr1.png",
     baits: [2585, 2587, 2589, 2591, 2593, 2596, 2598, 2603, 2606, 2611, 2613, 2616, 2617, 2619, 2621, 2628, 27592, 29717],
-    catches: [4885, 4903, 4904, 7684, 7686, 7707, 8764]
+    mooches: [4885, 4903, 4904, 7684, 7686, 7707, 8764]
   },
   4870: {
     name: "Lominsan Anchovy",
@@ -39,7 +39,7 @@ export default fishes = {
     level: 6,
     iconURL: "/i/029000/029005_hr1.png",
     baits: [2587, 2589, 2591, 2593, 2596, 2598, 2603, 2606, 2611, 2616, 2621, 2628, 27592, 29717],
-    catches: [4885, 4921, 7941]
+    mooches: [4885, 4921, 7941]
   },
   4873: {
     name: "Sea Cucumber",
@@ -56,7 +56,7 @@ export default fishes = {
     level: 7,
     iconURL: "/i/029000/029044_hr1.png",
     baits: [2587, 2589, 2591, 2593, 2596, 2598, 2603, 2606, 2611, 2613, 2616, 2617, 2619, 2621, 2628, 27592, 29717],
-    catches: [4885, 4888, 4903, 7686, 7707]
+    mooches: [4885, 4888, 4903, 7686, 7707]
   },
   4875: {
     name: "Vongola Clam",
@@ -169,7 +169,7 @@ export default fishes = {
     level: 25,
     iconURL: "/i/029000/029035_hr1.png",
     baits: [2587, 4874],
-    catches: [4903, 4917, 4920, 7686, 8753]
+    mooches: [4903, 4917, 4920, 7686, 8753]
   },
   4889: {
     name: "Monkfish",
@@ -250,7 +250,7 @@ export default fishes = {
     level: 34,
     iconURL: "/i/029000/029055_hr1.png",
     baits: [2596, 2598, 2606, 2616, 2617, 2619, 2621, 2628, 27592, 29717],
-    catches: [4885, 4903, 4906, 4918, 7915, 7917, 7948, 8755, 8756]
+    mooches: [4885, 4903, 4906, 4918, 7915, 7917, 7948, 8755, 8756]
   },
   4899: {
     name: "Haraldr Haddock",
@@ -299,7 +299,7 @@ export default fishes = {
     level: 43,
     iconURL: "/i/029000/029025_hr1.png",
     baits: [2585, 4869],
-    catches: [4903, 4912, 4919, 4922, 4923, 4924, 7684, 8757, 8764]
+    mooches: [4903, 4912, 4919, 4922, 4923, 4924, 7684, 8757, 8764]
   },
   4905: {
     name: "Raincaller",
@@ -344,7 +344,7 @@ export default fishes = {
   4910: {
     name: "Sea Devil",
     pools: [63, 74, 101],
-    description: "Legends tell of giant sea devils emerging from the sea to wrap their many arms around ships and drag them to the abyss. This seems impossible today, as the largest catches in recent memory are little more than a yalm across.\n\n[Suitable for printing on large canvases.]",
+    description: "Legends tell of giant sea devils emerging from the sea to wrap their many arms around ships and drag them to the abyss. This seems impossible today, as the largest mooches in recent memory are little more than a yalm across.\n\n[Suitable for printing on large canvases.]",
     level: 49,
     iconURL: "/i/029000/029039_hr1.png",
     baits: [2603, 2606, 2628, 27592, 29717]
@@ -420,7 +420,7 @@ export default fishes = {
     level: 55,
     iconURL: "/i/029000/029027_hr1.png",
     baits: [2585, 4904],
-    catches: [4923, 7950]
+    mooches: [4923, 7950]
   },
   4920: {
     name: "Gigant Octopus",
@@ -485,7 +485,7 @@ export default fishes = {
     level: 4,
     iconURL: "/i/029000/029230_hr1.png",
     baits: [2586, 2588, 2590, 2592, 2594, 2595, 2597, 2599, 2601, 2603, 2610, 2611, 2614, 2623, 27591, 29717],
-    catches: [4952, 4963, 5009, 5014, 5025, 7694, 7705]
+    mooches: [4952, 4963, 5009, 5014, 5025, 7694, 7705]
   },
   4928: {
     name: "Dwarf Catfish",
@@ -566,7 +566,7 @@ export default fishes = {
     level: 35,
     iconURL: "/i/029000/029310_hr1.png",
     baits: [2597, 2599, 2601, 2603, 2607, 2615, 2617, 2618, 2620, 2622, 2623, 2624, 2625, 2627, 12704, 12705, 12711, 27591, 29717],
-    catches: [5009, 5010, 5014, 5025, 7945, 7946, 8769]
+    mooches: [5009, 5010, 5014, 5025, 7945, 7946, 8769]
   },
   4938: {
     name: "Blindfish",
@@ -607,7 +607,7 @@ export default fishes = {
     level: 16,
     iconURL: "/i/029000/029216_hr1.png",
     baits: [2592, 2594, 2595, 2597, 2599, 2601, 2603, 2607, 2610, 2611, 2614, 2622, 2623, 2624, 2625, 2627, 27591, 29717],
-    catches: [4952, 4963, 4964, 4975, 5002, 7683, 7923]
+    mooches: [4952, 4963, 4964, 4975, 5002, 7683, 7923]
   },
   4943: {
     name: "Faerie Bass",
@@ -656,7 +656,7 @@ export default fishes = {
     level: 20,
     iconURL: "/i/029000/029314_hr1.png",
     baits: [2592, 2594, 2595, 2597, 2599, 2601, 2603, 2607, 2610, 2611, 2612, 2614, 2618, 2620, 2626, 27591, 29717],
-    catches: [4952, 4965, 4975, 4992, 7911, 7912, 7940]
+    mooches: [4952, 4965, 4975, 4992, 7911, 7912, 7940]
   },
   4949: {
     name: "Bluebell Salmon",
@@ -889,7 +889,7 @@ export default fishes = {
     level: 35,
     iconURL: "/i/029000/029234_hr1.png",
     baits: [2600, 2604, 27591, 29717],
-    catches: [5043]
+    mooches: [5043]
   },
   4978: {
     name: "Silverfish",
@@ -898,7 +898,7 @@ export default fishes = {
     level: 36,
     iconURL: "/i/029000/029312_hr1.png",
     baits: [2599, 2601, 2603, 2607, 2615, 2617, 2618, 2622, 2623, 2624, 2625, 2626, 2627, 27591, 29717],
-    catches: [4965, 4975, 5000, 5002, 5004, 5005, 5011, 5012, 5020, 7922, 7935, 8752, 8766, 8767, 8776]
+    mooches: [4965, 4975, 5000, 5002, 5004, 5005, 5011, 5012, 5020, 7922, 7935, 8752, 8766, 8767, 8776]
   },
   4979: {
     name: "Clown Loach",
@@ -1035,7 +1035,7 @@ export default fishes = {
     level: 44,
     iconURL: "/i/029000/029250_hr1.png",
     baits: [2601, 2603, 2620, 2626, 2627, 27591, 29717],
-    catches: [5005, 5015, 5018, 5022, 7905, 7943, 8773]
+    mooches: [5005, 5015, 5018, 5022, 7905, 7943, 8773]
   },
   4996: {
     name: "Southern Pike",
@@ -1092,7 +1092,7 @@ export default fishes = {
     level: 47,
     iconURL: "/i/029000/029238_hr1.png",
     baits: [2592, 2599, 4942, 4978, 5002, 5011, 29717],
-    catches: [5002, 8761, 8763, 8765]
+    mooches: [5002, 8761, 8763, 8765]
   },
   5003: {
     name: "Sludgeskipper",
@@ -1165,7 +1165,7 @@ export default fishes = {
     level: 50,
     iconURL: "/i/029000/029311_hr1.png",
     baits: [2599, 4978],
-    catches: [5002, 5019, 5024, 5026, 5030, 5031, 8762]
+    mooches: [5002, 5019, 5024, 5026, 5030, 5031, 8762]
   },
   5012: {
     name: "Vampire Lampern",
@@ -1358,12 +1358,12 @@ export default fishes = {
     level: 39,
     iconURL: "/i/029000/029606_hr1.png",
     baits: [2600, 2602, 2604, 27591, 27592, 29717],
-    catches: [5037, 5045, 7930, 7931, 8768]
+    mooches: [5037, 5045, 7930, 7931, 8768]
   },
   5036: {
     name: "Antlion Slug",
     pools: [86, 87],
-    description: "This sand-dwelling slug is able to maintain its mucous coating by absorbing the moisture from prey it catches at the bottom of conical pits not unlike the ones antlions are known to dig.\n\n[Suitable for printing on medium canvases.]",
+    description: "This sand-dwelling slug is able to maintain its mucous coating by absorbing the moisture from prey it mooches at the bottom of conical pits not unlike the ones antlions are known to dig.\n\n[Suitable for printing on medium canvases.]",
     level: 40,
     iconURL: "/i/029000/029601_hr1.png",
     baits: [2600, 2602, 2604, 27591, 27592, 29717]
@@ -1399,7 +1399,7 @@ export default fishes = {
     level: 48,
     iconURL: "/i/029000/029655_hr1.png",
     baits: [2605, 2609, 27591, 27592, 29717],
-    catches: [5041, 5044, 7949, 8771]
+    mooches: [5041, 5044, 7949, 8771]
   },
   5041: {
     name: "Blind Manta",
@@ -1432,7 +1432,7 @@ export default fishes = {
     level: 50,
     iconURL: "/i/029000/029656_hr1.png",
     baits: [5040],
-    catches: [5046]
+    mooches: [5046]
   },
   5045: {
     name: "Caravan Eel",
@@ -2361,7 +2361,7 @@ export default fishes = {
     level: 80,
     iconURL: "/i/029000/029660_hr1.png",
     baits: [5040],
-    catches: [8772]
+    mooches: [8772]
   },
   8772: {
     name: "Shonisaurus",

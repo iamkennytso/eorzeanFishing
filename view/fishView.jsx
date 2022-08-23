@@ -1,6 +1,6 @@
 import { View, StyleSheet, Text, Image, ScrollView  } from 'react-native';
 import { regions } from '../data/locations';
-import { AREA_SELECT, POOL_VIEW } from '../const/views';
+import { AREA_SELECT, FISH_VIEW, POOL_VIEW } from '../const/views';
 import { baitsData, fishesData, poolsData } from '../data';
 import { titleStyles, subtitleStyles, fontColorStyle, tilesContainer, customTileGradient, tileContainer, tileContentContainer, tileText } from '../styles/styles'
 import TouchableGradient from '../components/TouchableGradient';
@@ -8,17 +8,18 @@ import getIdImage from '../util/getIdImage';
 
 export default function FishView({ route, navigation }) {
   const { fish } = route.params;
-  const { name, level, description, pools, baits } = fish;
-
+  const { name, level, description, pools, baits, mooches } = fish;
+  const canMooch = !!mooches
+  console.log(fish)
   return <ScrollView>
     <View style={styles.imageContainer}>
       <Image style={styles.fishImage} source={{uri: `https://xivapi.com${fish.iconURL}`}} />
     </View>
     <Text style={titleStyles}>{name}</Text>
-    <Text style={styles.itemLevel}>Item Level: {level}</Text>
+    <Text style={styles.fishSubtitle}>Item Level: {level}</Text>
     <Text style={subtitleStyles}>Description:</Text>
     <Text style={fontColorStyle}>{description}</Text>
-    <Text style={styles.poolTitle}>Pools:</Text>
+    <Text style={styles.fishSubtitle}>Pools:</Text>
     {pools.map(poolID => poolsData[poolID].name !== 'unknown'
       ? <View style={styles.poolContainer} key={poolID}>
         <TouchableGradient
@@ -30,19 +31,49 @@ export default function FishView({ route, navigation }) {
       </View>
       : null
     )}
+    <Text style={styles.fishSubtitle}>Bait / Mooch:</Text>
     <View style={tilesContainer}>
-      {baits.map(baitID => <View style={tileContainer} key={baitID}>
-        <TouchableGradient
-          customGradientStyles={customTileGradient}
-          // onPress={ () => navigation.navigate(POOL_VIEW, { poolData: poolsData[poolID], poolID }) }
-        >
-          <View style={tileContentContainer}> 
-            <Image source={getIdImage(baitID)} />
-            <Text style={tileText}>{baitsData[baitID] ? baitsData[baitID].name : fishesData[baitID].name}</Text>
-          </View>
-        </TouchableGradient>
-      </View>)}
+      {baits.map(baitID => {
+        const isBait = !!baitsData[baitID]
+        const isFish = !!fishesData[baitID]
+        if (!isBait && !isFish) {
+          console.log(baitID)
+        }
+        return <View style={tileContainer} key={baitID}>
+          <TouchableGradient
+            customGradientStyles={customTileGradient}
+            onPress={ () => isBait 
+              // ? navigation.navigate(POOL_VIEW, { poolData: poolsData[poolID], poolID })
+              ? null
+              : navigation.navigate(FISH_VIEW, { fish: fishesData[baitID] } )
+            }
+          >
+            <View style={tileContentContainer}> 
+              <Image source={getIdImage(baitID)} />
+              <Text style={tileText}>{isBait ? baitsData[baitID].name : fishesData[baitID].name}</Text>
+            </View>
+          </TouchableGradient>
+        </View>
+      })}
     </View>
+    {canMooch ? <>
+      <Text style={styles.fishSubtitle}>Mooches:</Text>
+      <View style={tilesContainer}>
+        {mooches.map(baitID => {
+          return <View style={tileContainer} key={baitID}>
+            <TouchableGradient
+              customGradientStyles={customTileGradient}
+              onPress={() => navigation.navigate(FISH_VIEW, { fish: fishesData[baitID] })}
+            >
+              <View style={tileContentContainer}> 
+                <Image source={getIdImage(baitID)} />
+                <Text style={tileText}>{fishesData[baitID].name}</Text>
+              </View>
+            </TouchableGradient>
+          </View>
+        })}
+      </View>
+    </> : null}
   </ScrollView>
 }
 
@@ -59,11 +90,12 @@ const styles = StyleSheet.create({
     ...subtitleStyles,
     marginTop: 15
   },
-  itemLevel: {
+  fishSubtitle: {
     ...subtitleStyles,
     marginTop: 15,
     marginBottom: 15
   },
+
   poolContainer: {
     marginTop: 4,
     marginBottom: 4,
