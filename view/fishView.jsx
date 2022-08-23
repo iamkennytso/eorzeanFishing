@@ -1,15 +1,15 @@
 import { View, StyleSheet, Text, Image, ScrollView  } from 'react-native';
 import { regions } from '../data/locations';
 import { AREA_SELECT, POOL_VIEW } from '../const/views';
-import { poolsData } from '../data';
-import { titleStyles, subtitleStyles, fontColorStyle } from '../styles/styles'
+import { baitsData, fishesData, poolsData } from '../data';
+import { titleStyles, subtitleStyles, fontColorStyle, tilesContainer, customTileGradient, tileContainer, tileContentContainer, tileText } from '../styles/styles'
 import TouchableGradient from '../components/TouchableGradient';
-
+import getIdImage from '../util/getIdImage';
 
 export default function FishView({ route, navigation }) {
-  const { fish } = route.params
-  console.log(fish)
-  const { name, level, description, pools } = fish
+  const { fish } = route.params;
+  const { name, level, description, pools, baits } = fish;
+
   return <ScrollView>
     <View style={styles.imageContainer}>
       <Image style={styles.fishImage} source={{uri: `https://xivapi.com${fish.iconURL}`}} />
@@ -30,6 +30,19 @@ export default function FishView({ route, navigation }) {
       </View>
       : null
     )}
+    <View style={tilesContainer}>
+      {baits.map(baitID => <View style={tileContainer} key={baitID}>
+        <TouchableGradient
+          customGradientStyles={customTileGradient}
+          // onPress={ () => navigation.navigate(POOL_VIEW, { poolData: poolsData[poolID], poolID }) }
+        >
+          <View style={tileContentContainer}> 
+            <Image source={getIdImage(baitID)} />
+            <Text style={tileText}>{baitsData[baitID] ? baitsData[baitID].name : fishesData[baitID].name}</Text>
+          </View>
+        </TouchableGradient>
+      </View>)}
+    </View>
   </ScrollView>
 }
 
@@ -62,5 +75,5 @@ const styles = StyleSheet.create({
   },
   poolText: {
     ...fontColorStyle
-  },
+  }
 });

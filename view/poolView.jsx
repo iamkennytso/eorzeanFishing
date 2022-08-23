@@ -5,12 +5,7 @@ import { poolsData } from '../data';
 import getIdImage from '../util/getIdImage';
 import getPoolImage from '../util/getPoolImage';
 import TouchableGradient from '../components/TouchableGradient';
-import { titleStyles, subtitleStyles } from '../styles/styles'
-
-const customTileGradient = {
-  height: undefined,
-  aspectRatio: .90
-}
+import { titleStyles, subtitleStyles, tilesContainer, tileContainer, tileContentContainer, tileText, customTileGradient } from '../styles/styles'
 
 export default function PoolView({ navigation, route }) {
   const { poolData, poolID } = route.params;
@@ -34,16 +29,15 @@ export default function PoolView({ navigation, route }) {
               </View>
             </TouchableGradient>
           : null}
-      </View>
-      )}
+      </View>)}
     </View>
     {fish[5] ? <View style={styles.tilesContainer}>
-      {[5, 6, 7, 8, 9].map(idx => <View style={styles.tile} key={idx}>
+      {[5, 6, 7, 8, 9].map(idx => <View style={tileContainer} key={idx}>
         {fish[idx] ?
             <TouchableGradient customGradientStyles={customTileGradient} onPress={() => navigation.navigate(FISH_VIEW, { fish: fishes[fish[idx]] })}>
-              <View style={styles.tilesContentContainer}>
+              <View style={tileContentContainer}>
                 <Image source={getIdImage(fish[idx])} />
-                <Text style={styles.fishText}>{fishes[fish[idx]].name}</Text>
+                <Text style={tileText}>{fishes[fish[idx]].name}</Text>
               </View>
             </TouchableGradient>
           : null}
@@ -61,24 +55,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 10,
   },
   tilesContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 10,
+    ...tilesContainer,
+    flexWrap: 'nowrap'
   },
-  tile: {
-    width: '18%',
-    display: 'flex',
-    alignItems: 'center',
-    marginTop: 15
-  },
-  tilesContentContainer: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  fishText: {
-    color: 'white',
-    fontSize: 10,
-    textAlign: 'center'
-  }
 });

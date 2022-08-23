@@ -61,7 +61,7 @@ export const procure = {
   spa: 'Spanner'
 }
 
-export const baits = {
+export default baitsData = {
   2585: {
     name: "Lugworm",
     description: "A hairy marine worm that lives under beach sand. Live bait for ocean fishing.",
