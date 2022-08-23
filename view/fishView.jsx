@@ -8,14 +8,14 @@ import TouchableGradient from '../components/TouchableGradient';
 
 export default function FishView({ route, navigation }) {
   const { fish } = route.params
-  // console.log(fish)
+  console.log(fish)
   const { name, level, description, pools } = fish
   return <ScrollView>
     <View style={styles.imageContainer}>
       <Image style={styles.fishImage} source={{uri: `https://xivapi.com${fish.iconURL}`}} />
     </View>
     <Text style={titleStyles}>{name}</Text>
-    <Text style={subtitleStyles}>Item Level: {level}</Text>
+    <Text style={styles.itemLevel}>Item Level: {level}</Text>
     <Text style={subtitleStyles}>Description:</Text>
     <Text style={fontColorStyle}>{description}</Text>
     <Text style={styles.poolTitle}>Pools:</Text>
@@ -45,6 +45,11 @@ const styles = StyleSheet.create({
   poolTitle: {
     ...subtitleStyles,
     marginTop: 15
+  },
+  itemLevel: {
+    ...subtitleStyles,
+    marginTop: 15,
+    marginBottom: 15
   },
   poolContainer: {
     marginTop: 4,
