@@ -13,13 +13,13 @@ export default function PoolView({ navigation, route }) {
 
   const poolImageSource = getPoolImage(poolID)
 
-  return <ScrollView style={styles.scrollView}>
+  return <ScrollView>
     <View>
       <Image style={styles.poolImage} source={poolImageSource} />
     </View>
     <Text style={titleStyles}>{name}</Text>
     <Text style={subtitleStyles}>Pool Level: {level}</Text>
-    <View style={styles.tilesContainer}>
+    <View style={tilesContainer}>
       {[0, 1, 2, 3, 4].map(idx => <View style={tileContainer} key={idx}>
         {fish[idx] ?
             <TouchableGradient customGradientStyles={customTileGradient} onPress={() => navigation.navigate(FISH_VIEW, { fish: fishesData[fish[idx]] })}>
@@ -31,7 +31,7 @@ export default function PoolView({ navigation, route }) {
           : null}
       </View>)}
     </View>
-    {fish[5] ? <View style={styles.tilesContainer}>
+    {fish[5] ? <View style={tilesContainer}>
       {[5, 6, 7, 8, 9].map(idx => <View style={tileContainer} key={idx}>
         {fish[idx] ?
             <TouchableGradient customGradientStyles={customTileGradient} onPress={() => navigation.navigate(FISH_VIEW, { fish: fishesData[fish[idx]] })}>
@@ -53,9 +53,5 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
-  },
-  tilesContainer: {
-    ...tilesContainer,
-    flexWrap: 'nowrap'
-  },
+  }
 });

@@ -10,8 +10,8 @@ export default function FishView({ route, navigation }) {
   const { fish } = route.params;
   const { name, level, description, pools, baits, mooches } = fish;
   const canMooch = !!mooches
-  console.log(fish)
-  return <ScrollView>
+
+return <ScrollView>
     <View style={styles.imageContainer}>
       <Image style={styles.fishImage} source={{uri: `https://xivapi.com${fish.iconURL}`}} />
     </View>
@@ -24,7 +24,7 @@ export default function FishView({ route, navigation }) {
       ? <View style={styles.poolContainer} key={poolID}>
         <TouchableGradient
           customGradientStyles={styles.poolContentContainer} 
-          onPress={ () => navigation.navigate(POOL_VIEW, { poolData: poolsData[poolID], poolID }) }
+          onPress={() => navigation.navigate(POOL_VIEW, { poolData: poolsData[poolID], poolID })}
         >
           <Text style={styles.poolText}>{poolsData[poolID].name}</Text>
         </TouchableGradient>
@@ -42,7 +42,7 @@ export default function FishView({ route, navigation }) {
         return <View style={tileContainer} key={baitID}>
           <TouchableGradient
             customGradientStyles={customTileGradient}
-            onPress={ () => isBait 
+            onPress={() => isBait 
               // ? navigation.navigate(POOL_VIEW, { poolData: poolsData[poolID], poolID })
               ? null
               : navigation.navigate(FISH_VIEW, { fish: fishesData[baitID] } )
