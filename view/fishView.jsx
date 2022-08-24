@@ -1,6 +1,5 @@
 import { View, StyleSheet, Text, Image, ScrollView  } from 'react-native';
-import { regions } from '../data/locations';
-import { AREA_SELECT, FISH_VIEW, POOL_VIEW } from '../const/views';
+import { AREA_SELECT, BAIT_VIEW, FISH_VIEW, POOL_VIEW } from '../const/views';
 import { baitsData, fishesData, poolsData } from '../data';
 import { titleStyles, subtitleStyles, fontColorStyle, tilesContainer, customTileGradient, tileContainer, tileContentContainer, tileText } from '../styles/styles'
 import TouchableGradient from '../components/TouchableGradient';
@@ -24,7 +23,7 @@ return <ScrollView>
       ? <View style={styles.poolContainer} key={poolID}>
         <TouchableGradient
           customGradientStyles={styles.poolContentContainer} 
-          onPress={() => navigation.navigate(POOL_VIEW, { poolData: poolsData[poolID], poolID })}
+          onPress={() => navigation.navigate(POOL_VIEW, { poolData: poolsData[poolID] })}
         >
           <Text style={styles.poolText}>{poolsData[poolID].name}</Text>
         </TouchableGradient>
@@ -43,8 +42,8 @@ return <ScrollView>
           <TouchableGradient
             customGradientStyles={customTileGradient}
             onPress={() => isBait 
-              // ? navigation.navigate(POOL_VIEW, { poolData: poolsData[poolID], poolID })
-              ? null
+              ? navigation.navigate(BAIT_VIEW, { bait: baitsData[baitID] })
+              // ? null
               : navigation.navigate(FISH_VIEW, { fish: fishesData[baitID] } )
             }
           >

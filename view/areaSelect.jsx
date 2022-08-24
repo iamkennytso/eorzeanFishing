@@ -58,9 +58,9 @@ export default function AreaSelect({ navigation, route }) {
           <SimpleAccordion
             title={area}
             viewInside={areaExpandContent(regionAreas[area], navigation)}
-            titleStyle={transparentBackground}
+            titleStyle={subtitleStyles}
             bannerStyle={transparentBackground}
-            viewContainerStyle={areaExpandedContainerStyles}
+            viewContainerStyle={transparentBackground}
             showContentInsideOfCard={false}
             arrowColor={BLUE_FONT}
           />
@@ -68,6 +68,10 @@ export default function AreaSelect({ navigation, route }) {
       </View>
     ))}
   </ScrollView>
+}
+
+const transparentBackground = {
+  backgroundColor: 'transparent'
 }
 
 const styles = StyleSheet.create({

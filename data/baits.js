@@ -1,4 +1,4 @@
-export const procure = {
+export const baitProcure = {
   gsm: 'Goldsmith',
   cul: 'Culinarian',
   scx: 'Scrip Exchange',
@@ -58,7 +58,8 @@ export const procure = {
   vmr: 'Village Merchant',
   tsm: 'Tool Supplier and Mender',
   den: 'Denys',
-  spa: 'Spanner'
+  spa: 'Spanner',
+  lim: 'Syneyhil'
 }
 
 export default baitsData = {
