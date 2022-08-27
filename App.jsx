@@ -3,8 +3,9 @@ import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { RegionSelect, AreaSelect, PoolView, FishView, BaitView } from './view';
-import { AREA_SELECT, BAIT_VIEW, FISH_VIEW, POOL_VIEW, REGION_SELECT } from './const/views.js'
+import { AREA_SELECT, BAIT_VIEW, FISH_GUIDE, FISH_VIEW, POOL_VIEW, REGION_SELECT } from './const/views.js'
 import { SafeAreaView, StyleSheet,  StatusBar as RNStatusBar, } from 'react-native';
+import FishGuide from './view/fishGuideView';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +33,7 @@ export default function App() {
           <Stack.Screen name={POOL_VIEW} component={PoolView} />
           <Stack.Screen name={FISH_VIEW} component={FishView} />
           <Stack.Screen name={BAIT_VIEW} component={BaitView} />
+          <Stack.Screen name={FISH_GUIDE} component={FishGuide} />
         </Stack.Navigator>
       </SafeAreaView>
     </NavigationContainer>

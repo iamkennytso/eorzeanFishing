@@ -1,6 +1,6 @@
 import { View, StyleSheet, Text, Image, ScrollView, TouchableHighlight  } from 'react-native';
 import { regionsData } from '../data';
-import { AREA_SELECT } from '../const/views';
+import { AREA_SELECT, FISH_GUIDE } from '../const/views';
 import TouchableGradient from '../components/TouchableGradient';
 import { titleStyles, subtitleStyles } from '../styles/styles'
 
@@ -19,6 +19,15 @@ export default function RegionSelect({ navigation }) {
           <Text style={subtitleStyles}>{region}</Text>
         </TouchableGradient>
       </View>)}
+      <TouchableGradient
+        onPress={() => navigation.navigate(FISH_GUIDE)}
+        customGradientStyles={styles.regionGradient}
+      >
+        <View style={styles.header}>
+          <Image style={{height: 32, width: 32}} source={require('../assets/misc/fisher.png')} />
+          <Text style={subtitleStyles}>  Fish Guide</Text>
+        </View>
+      </TouchableGradient>
     </ScrollView>
   </>
 }
