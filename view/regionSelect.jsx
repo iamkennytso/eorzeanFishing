@@ -19,7 +19,7 @@ export default function RegionSelect({ navigation }) {
           <Text style={subtitleStyles}>{region}</Text>
         </TouchableGradient>
       </View>)}
-      <TouchableGradient
+      {/* <TouchableGradient
         onPress={() => navigation.navigate(FISH_GUIDE)}
         customGradientStyles={styles.regionGradient}
       >
@@ -27,7 +27,7 @@ export default function RegionSelect({ navigation }) {
           <Image style={{height: 32, width: 32}} source={require('../assets/misc/fisher.png')} />
           <Text style={subtitleStyles}>  Fish Guide</Text>
         </View>
-      </TouchableGradient>
+      </TouchableGradient> */}
     </ScrollView>
   </>
 }

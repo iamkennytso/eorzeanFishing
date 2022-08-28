@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "ffxivFishingBuddy",
-    "slug": "ffxivFishingBuddy",
+    "name": "FFXIV Fishing Buddy",
+    "slug": "ffxiv-fishing-buddy",
+    "owner": "hardnecksolutions",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,13 +19,14 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.FFXIVFishingBuddy"
     },
     "web": {
       "favicon": "./assets/favicon.png"
