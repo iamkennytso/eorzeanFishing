@@ -1,6 +1,6 @@
 import { View, StyleSheet, Text, Image, ScrollView  } from 'react-native';
-import { AREA_SELECT, FISH_VIEW, POOL_VIEW } from '../const/views';
-import { baitsData, fishesData, baitProcure } from '../data';
+import { FISH_VIEW } from '../const/views';
+import { fishesData, baitProcure } from '../data';
 import { titleStyles, subtitleStyles, fontColorStyle, tilesContainer, customTileGradient, tileContainer, tileContentContainer, tileText } from '../styles/styles'
 import TouchableGradient from '../components/TouchableGradient';
 import getIdImage from '../util/getIdImage';
@@ -8,7 +8,6 @@ import getIdImage from '../util/getIdImage';
 export default function BaitView({ route, navigation }) {
   const { bait } = route.params;
   const { name, level, description, fishes, aquisition } = bait;
-  console.log(baitProcure)
 
   return <ScrollView>
     <View style={styles.imageContainer}>
@@ -20,27 +19,26 @@ export default function BaitView({ route, navigation }) {
     <Text style={fontColorStyle}>{description}</Text>
     <Text style={styles.fishSubtitle}>Fish:</Text>
     <View style={tilesContainer}>
-      {fishes.map(fishID => {
-        return <View style={tileContainer} key={fishID}>
-          <TouchableGradient
-            customGradientStyles={customTileGradient}
-            onPress={() => navigation.navigate(FISH_VIEW, { fish: fishesData[fishID] } )}
-          >
-            <View style={tileContentContainer}> 
-              <Image source={getIdImage(fishID)} />
-              <Text style={tileText}>{fishesData[fishID].name}</Text>
-            </View>
-          </TouchableGradient>
-        </View>
-      })}
+      {fishes.map(fishID => <View style={tileContainer} key={fishID}>
+        <TouchableGradient
+          customGradientStyles={customTileGradient}
+          onPress={() => navigation.navigate(FISH_VIEW, { fish: fishesData[fishID] } )}
+        >
+          <View style={tileContentContainer}> 
+            <Image source={getIdImage[fishID]} />
+            <Text style={tileText}>{fishesData[fishID].name}</Text>
+          </View>
+        </TouchableGradient>
+      </View>)}
     </View>
     <Text style={styles.fishSubtitle}>Aquisition:</Text>
     <View style={tilesContainer}>
-      {aquisition.map(aquisitionID => {
-        return <View style={styles.baitProcureContainer} key={aquisitionID}>
-          <Text style={tileText}>{baitProcure[aquisitionID]}</Text>
-        </View>
-      })}
+      {aquisition.map(aquisitionID => <View 
+        style={styles.baitProcureContainer} 
+        key={aquisitionID}
+      >
+        <Text style={tileText}>{baitProcure[aquisitionID]}</Text>
+      </View>)}
     </View>
   </ScrollView>
 }
@@ -54,27 +52,10 @@ const styles = StyleSheet.create({
     height: 80,
     width: 80
   },
-  poolTitle: {
-    ...subtitleStyles,
-    marginTop: 15
-  },
   fishSubtitle: {
     ...subtitleStyles,
     marginTop: 15,
     marginBottom: 15
-  },
-
-  poolContainer: {
-    marginTop: 4,
-    marginBottom: 4,
-  },
-  poolContentContainer: {
-    paddingLeft: 6,
-    paddingBottom: 6,
-    paddingTop: 6
-  },
-  poolText: {
-    ...fontColorStyle
   },
   baitProcureContainer: {
     ...tileContainer,

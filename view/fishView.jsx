@@ -23,7 +23,7 @@ return <ScrollView>
       ? <View style={styles.poolContainer} key={poolID}>
         <TouchableGradient
           customGradientStyles={styles.poolContentContainer} 
-          onPress={() => navigation.navigate(POOL_VIEW, { poolData: poolsData[poolID] })}
+          onPress={() => navigation.navigate(POOL_VIEW, { poolData: poolsData[poolID], poolID })}
         >
           <Text style={styles.poolText}>{poolsData[poolID].name}</Text>
         </TouchableGradient>
@@ -48,7 +48,7 @@ return <ScrollView>
             }
           >
             <View style={tileContentContainer}> 
-              <Image source={getIdImage(baitID)} />
+              <Image source={getIdImage[baitID]} />
               <Text style={tileText}>{isBait ? baitsData[baitID].name : fishesData[baitID].name}</Text>
             </View>
           </TouchableGradient>
@@ -65,7 +65,7 @@ return <ScrollView>
               onPress={() => navigation.navigate(FISH_VIEW, { fish: fishesData[baitID] })}
             >
               <View style={tileContentContainer}> 
-                <Image source={getIdImage(baitID)} />
+                <Image source={getIdImage[baitID]} />
                 <Text style={tileText}>{fishesData[baitID].name}</Text>
               </View>
             </TouchableGradient>

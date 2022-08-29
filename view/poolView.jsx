@@ -11,7 +11,7 @@ export default function PoolView({ navigation, route }) {
   const { poolData, poolID } = route.params;
   const { level, name, fish } = poolData;
 
-  const poolImageSource = getPoolImage(poolID)
+  const poolImageSource = getPoolImage[poolID]
 
   return <ScrollView>
     <View>
@@ -24,7 +24,7 @@ export default function PoolView({ navigation, route }) {
         {fish[idx] ?
             <TouchableGradient customGradientStyles={customTileGradient} onPress={() => navigation.navigate(FISH_VIEW, { fish: fishesData[fish[idx]] })}>
               <View style={tileContentContainer}>
-                <Image source={getIdImage(fish[idx])} />
+                <Image source={getIdImage[fish[idx]]} />
                 <Text style={tileText}>{fishesData[fish[idx]].name}</Text>
               </View>
             </TouchableGradient>
@@ -36,7 +36,7 @@ export default function PoolView({ navigation, route }) {
         {fish[idx] ?
             <TouchableGradient customGradientStyles={customTileGradient} onPress={() => navigation.navigate(FISH_VIEW, { fish: fishesData[fish[idx]] })}>
               <View style={tileContentContainer}>
-                <Image source={getIdImage(fish[idx])} />
+                <Image source={getIdImage[fish[idx]]} />
                 <Text style={tileText}>{fishesData[fish[idx]].name}</Text>
               </View>
             </TouchableGradient>
