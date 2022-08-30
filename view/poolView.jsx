@@ -12,15 +12,20 @@ export default function PoolView({ navigation, route }) {
   const { level, name, fish } = poolData;
 
   const poolImageSource = getPoolImage[poolID]
-
+  
   return <ScrollView>
-    <View>
-      <Image style={styles.poolImage} source={poolImageSource} />
-    </View>
+    <Image style={styles.poolImage} source={poolImageSource} />
     <Text style={titleStyles}>{name}</Text>
-    <Text style={subtitleStyles}>Pool Level: {level}</Text>
+    <View style={styles.poolLevelLinkContainer}>
+      <Text style={subtitleStyles}>Pool Level: {level}</Text>
+      <TouchableGradient>
+        <Image source={require('../assets/misc/gamerEscape.jpg')} style={styles.linkImage}/>
+      </TouchableGradient>
+    </View>
     <View style={tilesContainer}>
-      {[0, 1, 2, 3, 4].map(idx => <View style={tileContainer} key={idx}>
+      {[0, 1, 2, 3, 4].map(idx => {
+        console.log(fish[idx])
+      return <View style={tileContainer} key={idx}>
         {fish[idx] ?
             <TouchableGradient customGradientStyles={customTileGradient} onPress={() => navigation.navigate(FISH_VIEW, { fish: fishesData[fish[idx]] })}>
               <View style={tileContentContainer}>
@@ -29,10 +34,12 @@ export default function PoolView({ navigation, route }) {
               </View>
             </TouchableGradient>
           : null}
-      </View>)}
+      </View>})}
     </View>
     {fish[5] ? <View style={tilesContainer}>
-      {[5, 6, 7, 8, 9].map(idx => <View style={tileContainer} key={idx}>
+      {[5, 6, 7, 8, 9].map(idx => {
+        console.log(fish[idx])
+      return <View style={tileContainer} key={idx}>
         {fish[idx] ?
             <TouchableGradient customGradientStyles={customTileGradient} onPress={() => navigation.navigate(FISH_VIEW, { fish: fishesData[fish[idx]] })}>
               <View style={tileContentContainer}>
@@ -41,7 +48,7 @@ export default function PoolView({ navigation, route }) {
               </View>
             </TouchableGradient>
           : null}
-      </View>)}
+      </View>})}
     </View> : null}
   </ScrollView>
 }
@@ -53,5 +60,14 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
+  },
+  poolLevelLinkContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  linkImage: {
+    height: 20,
+    width: 20
   }
 });
