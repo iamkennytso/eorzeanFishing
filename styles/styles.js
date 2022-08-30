@@ -43,3 +43,10 @@ export const tileText = {
   fontSize: 10,
   textAlign: 'center'
 }
+
+export const customLinkGradient = {
+  aspectRatio: 1,
+  height: 22,
+  width: 22,
+  borderRadius: 2
+}
