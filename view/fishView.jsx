@@ -1,5 +1,5 @@
 import { View, StyleSheet, Text, Image, ScrollView  } from 'react-native';
-import { AREA_SELECT, BAIT_VIEW, FISH_VIEW, POOL_VIEW } from '../const/views';
+import { BAIT_VIEW, FISH_VIEW, POOL_VIEW } from '../const/views';
 import { baitsData, fishesData, poolsData } from '../data';
 import { titleStyles, subtitleStyles, fontColorStyle, tilesContainer, customTileGradient, tileContainer, tileContentContainer, tileText } from '../styles/styles'
 import TouchableGradient from '../components/TouchableGradient';
