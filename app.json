@@ -5,12 +5,12 @@
     "owner": "hardnecksolutions",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/misc/fullIcon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/misc/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#0000FF"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -19,17 +19,19 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": false
+      "supportsTablet": false,
+      "icon": "./assets/misc/fullIcon.png",
+      "bundleIdentifier": "com.hardneckSolutions.ffxivFishingBuddy"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "foregroundImage": "./assets/misc/iconForeground.png",
+        "backgroundImage": "./assets/misc/iconBackground.png"
       },
-      "package": "com.FFXIVFishingBuddy"
+      "package": "com.hardneckSolutions.ffxivFishingBuddy"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/misc/fullIcon.png"
     }
   }
 }

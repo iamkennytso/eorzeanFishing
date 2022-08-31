@@ -7,7 +7,7 @@ import getIdImage from '../util/getIdImage';
 
 export default function BaitView({ route, navigation }) {
   const { bait } = route.params;
-  const { name, level, description, fishes, aquisition } = bait;
+  const { name, level, description, fishes, acquisition } = bait;
 
   return <ScrollView>
     <View style={styles.imageContainer}>
@@ -33,11 +33,11 @@ export default function BaitView({ route, navigation }) {
     </View>
     <Text style={styles.fishSubtitle}>Aquisition:</Text>
     <View style={tilesContainer}>
-      {aquisition.map(aquisitionID => <View 
+      {acquisition.map(acquisitionID => <View 
         style={styles.baitProcureContainer} 
-        key={aquisitionID}
+        key={acquisitionID}
       >
-        <Text style={tileText}>{baitProcure[aquisitionID]}</Text>
+        <Text style={tileText}>{baitProcure[acquisitionID]}</Text>
       </View>)}
     </View>
   </ScrollView>
