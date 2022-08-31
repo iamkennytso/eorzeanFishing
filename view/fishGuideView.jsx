@@ -1,20 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { View, StyleSheet, Image, Text  } from 'react-native';
 import { fishIdxToId } from '../data/fishes';
-import Svg, {Path} from 'react-native-svg'
 import { BLUE_FONT } from '../styles/variables';
 import getIdImage from '../util/getIdImage';
 import { fishesData } from '../data';
 import { FISH_VIEW } from '../const/views';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const lastPage = Math.ceil(fishIdxToId.length / 25) - 1
-const LeftArrowSVG = ({fillColor = BLUE_FONT}) => <Svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
-  <Path fill={fillColor} d="m22.65 35.95-12-12 12-12 2.1 2.1-9.9 9.9 9.9 9.9Zm12.65 0-12-12 12-12 2.1 2.1-9.9 9.9 9.9 9.9Z"/>
-</Svg>
+// const LeftArrowSVG = ({fillColor = BLUE_FONT}) => <Svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
+//   <Path fill={fillColor} d="m22.65 35.95-12-12 12-12 2.1 2.1-9.9 9.9 9.9 9.9Zm12.65 0-12-12 12-12 2.1 2.1-9.9 9.9 9.9 9.9Z"/>
+// </Svg>
 
-const RightArrowSVG = ({fillColor = BLUE_FONT}) => <Svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" >
-  <Path fill={fillColor} d="m12.75 35.95-2.1-2.1 9.9-9.9-9.9-9.9 2.1-2.1 12 12Zm12.65 0-2.1-2.1 9.9-9.9-9.9-9.9 2.1-2.1 12 12Z"/>
-</Svg>
+// const RightArrowSVG = ({fillColor = BLUE_FONT}) => <Svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" >
+//   <Path fill={fillColor} d="m12.75 35.95-2.1-2.1 9.9-9.9-9.9-9.9 2.1-2.1 12 12Zm12.65 0-2.1-2.1 9.9-9.9-9.9-9.9 2.1-2.1 12 12Z"/>
+// </Svg>
 
 const generatePageArray = selectedPage => {
   switch (true) {
@@ -42,11 +42,39 @@ const customFishGradientStyles = {
   justifyContent: 'center',
   alignItems: 'center',
 }
+
+const greenGradient = ['#31f472', '#2920BD']
+
 export default function FishGuide({ navigation }) {
   const [selectedPage, setSelectedPage] = useState(0);
+  const [caughtFish, setCaughtFish] = useState({})
   const start = 25 * selectedPage
   const end = start + 25
   const data = fishIdxToId.slice(start, end)
+  
+  useEffect(() => {
+    getUserData()
+  },[])
+
+  const getUserData = async () => {
+    try {
+      const fishData = await AsyncStorage.getItem('caughtFish')
+      if (fishData) {
+        setCaughtFish(JSON.parse(fishData))
+      }
+      return fishData != null ? JSON.parse(fishData) : null;
+    } catch(e) {
+      console.error(e)
+    }
+  }
+
+  const handleSaveCaughtFish = async fishId => {
+    const updatedCaughtFish = {...caughtFish, [fishId]: caughtFish[fishId] ? false : true}
+    await AsyncStorage.mergeItem('caughtFish', JSON.stringify(updatedCaughtFish))
+    setCaughtFish(updatedCaughtFish)
+  }
+
+  console.log(caughtFish)
 
   return <>
     <View style={styles.pageSelectContainer}>
@@ -65,13 +93,20 @@ export default function FishGuide({ navigation }) {
         {[0,5,10,15,20].map(col => {
           const fishId = data[col + row - 1]
           return <View style={styles.fishTile} key={`${row}${col}`}>
-            <TouchableGradient customGradientStyles={customFishGradientStyles} onPress={() => navigation.navigate(FISH_VIEW, { fish: fishesData[fishId] })}>
+            <TouchableGradient 
+              customGradientStyles={customFishGradientStyles} 
+              onPress={() => navigation.navigate(FISH_VIEW, { fish: fishesData[fishId] })}
+              onLongPress={() => handleSaveCaughtFish(fishId)}
+              gradientColors={caughtFish[fishId] ? greenGradient : undefined}
+            >
               <Image source={getIdImage[fishId]} />
             </TouchableGradient>
           </View>
         })}
       </View>)}
     </View>
+    <Text style={styles.descriptionText}>Press to view more information</Text>
+    <Text style={styles.descriptionText}>Long press to 'save' a fish</Text>
   </>
 }
 
@@ -141,6 +176,10 @@ const styles = StyleSheet.create({
       height: 20,
       width: 20,
       borderRadius: 4
+    },
+    descriptionText: {
+      color: BLUE_FONT,
+      fontSize: 20
     }
   
 });
