@@ -43,7 +43,7 @@ const customFishGradientStyles = {
   alignItems: 'center',
 }
 
-const greenGradient = ['#31f472', '#2920BD']
+const greenGradient = ['#31c272', '#29b659']
 
 export default function FishGuide({ navigation }) {
   const [selectedPage, setSelectedPage] = useState(0);
