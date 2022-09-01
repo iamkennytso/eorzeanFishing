@@ -21,17 +21,22 @@
     "ios": {
       "supportsTablet": false,
       "icon": "./assets/misc/fullIcon.png",
-      "bundleIdentifier": "com.hardneckSolutions.ffxivFishingBuddy"
+      "bundleIdentifier": "com.hardneckSolutions.ffxivFishingBuddy",
+      "infoPlist": {}
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/misc/iconForeground.png",
-        "backgroundImage": "./assets/misc/iconBackground.png"
+        "backgroundImage": "./assets/misc/iconBackground.png",
       },
-      "package": "com.hardneckSolutions.ffxivFishingBuddy"
+      "package": "com.hardneckSolutions.ffxivFishingBuddy",
+      "permissions": []
     },
     "web": {
       "favicon": "./assets/misc/fullIcon.png"
-    }
+    },
+    "plugins": [
+      "expo-tracking-transparency"
+    ]
   }
 }

@@ -35,7 +35,7 @@ const areaExpandContent = (poolIDs, navigation) => <View>
 
     return <TouchableHighlight
       key={poolID}
-      onPress={() => navigation.navigate(POOL_VIEW, { poolData, poolID })}
+      onPress={() => navigation.navigate(POOL_VIEW, { poolData })}
       underlayColor='#5150C6'
     >
       <View style={styles.poolContentContainer}>

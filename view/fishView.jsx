@@ -3,7 +3,7 @@ import { BAIT_VIEW, FISH_VIEW, POOL_VIEW } from '../const/views';
 import { baitsData, fishesData, poolsData } from '../data';
 import { titleStyles, subtitleStyles, fontColorStyle, tilesContainer, customTileGradient, tileContainer, tileContentContainer, tileText } from '../styles/styles'
 import TouchableGradient from '../components/TouchableGradient';
-import getIdImage from '../util/getIdImage';
+import idToImageMap from '../util/idToImageMap';
 
 export default function FishView({ route, navigation }) {
   const { fish } = route.params;
@@ -23,7 +23,7 @@ return <ScrollView>
       ? <View style={styles.poolContainer} key={poolID}>
         <TouchableGradient
           customGradientStyles={styles.poolContentContainer} 
-          onPress={() => navigation.navigate(POOL_VIEW, { poolData: poolsData[poolID], poolID })}
+          onPress={() => navigation.navigate(POOL_VIEW, { poolData: poolsData[poolID] })}
         >
           <Text style={styles.poolText}>{poolsData[poolID].name}</Text>
         </TouchableGradient>
@@ -48,7 +48,7 @@ return <ScrollView>
             }
           >
             <View style={tileContentContainer}> 
-              <Image source={getIdImage[baitID]} />
+              <Image source={idToImageMap[baitID]} />
               <Text style={tileText}>{isBait ? baitsData[baitID].name : fishesData[baitID].name}</Text>
             </View>
           </TouchableGradient>
@@ -65,7 +65,7 @@ return <ScrollView>
               onPress={() => navigation.navigate(FISH_VIEW, { fish: fishesData[baitID] })}
             >
               <View style={tileContentContainer}> 
-                <Image source={getIdImage[baitID]} />
+                <Image source={idToImageMap[baitID]} />
                 <Text style={tileText}>{fishesData[baitID].name}</Text>
               </View>
             </TouchableGradient>

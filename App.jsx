@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { SafeAreaView, StyleSheet,  StatusBar as RNStatusBar, } from 'react-native';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { requestTrackingPermissionsAsync } from 'expo-tracking-transparency';
 
 import { RegionSelect, AreaSelect, PoolView, FishView, BaitView, FishGuide, AboutView } from './view';
 import { ABOUT_VIEW, AREA_SELECT, BAIT_VIEW, FISH_GUIDE, FISH_VIEW, POOL_VIEW, REGION_SELECT } from './const/views.js'
-import { SafeAreaView, StyleSheet,  StatusBar as RNStatusBar, } from 'react-native';
-import { BLUE_FONT } from './styles/variables';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,6 +18,15 @@ const customReactNavigationTheme = {
 }
 
 export default function App() {
+  useEffect(() => {
+    (async () => {
+      const { status } = await requestTrackingPermissionsAsync();
+      if (status === 'granted') {
+        console.log('Tracking Permission Granted');
+      }
+    })();
+  }, []);
+
   return (
     <NavigationContainer theme={customReactNavigationTheme}>
       <SafeAreaView style={styles.container}>

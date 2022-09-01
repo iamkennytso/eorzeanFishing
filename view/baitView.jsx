@@ -3,7 +3,7 @@ import { FISH_VIEW } from '../const/views';
 import { fishesData, baitProcure } from '../data';
 import { titleStyles, subtitleStyles, fontColorStyle, tilesContainer, customTileGradient, tileContainer, tileContentContainer, tileText } from '../styles/styles'
 import TouchableGradient from '../components/TouchableGradient';
-import getIdImage from '../util/getIdImage';
+import idToImageMap from '../util/idToImageMap';
 
 export default function BaitView({ route, navigation }) {
   const { bait } = route.params;
@@ -25,7 +25,7 @@ export default function BaitView({ route, navigation }) {
           onPress={() => navigation.navigate(FISH_VIEW, { fish: fishesData[fishID] } )}
         >
           <View style={tileContentContainer}> 
-            <Image source={getIdImage[fishID]} />
+            <Image source={idToImageMap[fishID]} />
             <Text style={tileText}>{fishesData[fishID].name}</Text>
           </View>
         </TouchableGradient>

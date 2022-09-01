@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { View, StyleSheet, Image, Text  } from 'react-native';
 import { fishIdxToId } from '../data/fishes';
 import { BLUE_FONT } from '../styles/variables';
-import getIdImage from '../util/getIdImage';
+import idToImageMap from '../util/idToImageMap';
 import { fishesData } from '../data';
 import { FISH_VIEW } from '../const/views';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -99,7 +99,7 @@ export default function FishGuide({ navigation }) {
               onLongPress={() => handleSaveCaughtFish(fishId)}
               gradientColors={caughtFish[fishId] ? greenGradient : undefined}
             >
-              <Image source={getIdImage[fishId]} />
+              <Image source={idToImageMap[fishId]} />
             </TouchableGradient>
           </View>
         })}

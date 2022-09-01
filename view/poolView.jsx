@@ -1,21 +1,18 @@
 import { View, StyleSheet, Text, Image, ScrollView, Linking } from 'react-native';
 import { FISH_VIEW } from '../const/views';
 import { fishesData } from '../data';
-import { poolsData } from '../data';
-import getIdImage from '../util/getIdImage';
-import getPoolImage from '../util/getPoolImage';
+import idToImageMap from '../util/idToImageMap';
 import TouchableGradient from '../components/TouchableGradient';
 import { titleStyles, subtitleStyles, tilesContainer, tileContainer, tileContentContainer, tileText, customTileGradient, customLinkGradient } from '../styles/styles'
 import getGamerEscapeURL from '../util/getGamerEscapeURL';
 
 
 export default function PoolView({ navigation, route }) {
-  const { poolData, poolID } = route.params;
-  const { level, name, fish } = poolData;
-  const poolImageSource = getPoolImage[poolID]
+  const { poolData } = route.params;
+  const { level, name, fish, image } = poolData;
 
   return <ScrollView>
-    <Image style={styles.poolImage} source={poolImageSource} />
+    <Image style={styles.poolImage} source={{uri: `https://ffxiv.gamerescape.com/${image}`}} />
     <Text style={titleStyles}>{name}</Text>
     <View style={styles.poolLevelLinkContainer}>
       <Text style={subtitleStyles}>Pool Level: {level}</Text>
@@ -28,7 +25,7 @@ export default function PoolView({ navigation, route }) {
         {fish[idx] ?
           <TouchableGradient customGradientStyles={customTileGradient} onPress={() => navigation.navigate(FISH_VIEW, { fish: fishesData[fish[idx]] })}>
             <View style={tileContentContainer}>
-              <Image source={getIdImage[fish[idx]]} />
+              <Image source={idToImageMap[fish[idx]]} />
               <Text style={tileText}>{fishesData[fish[idx]].name}</Text>
             </View>
           </TouchableGradient>
@@ -40,7 +37,7 @@ export default function PoolView({ navigation, route }) {
         {fish[idx] ?
           <TouchableGradient customGradientStyles={customTileGradient} onPress={() => navigation.navigate(FISH_VIEW, { fish: fishesData[fish[idx]] })}>
             <View style={tileContentContainer}>
-              <Image source={getIdImage[fish[idx]]} />
+              <Image source={idToImageMap[fish[idx]]} />
               <Text style={tileText}>{fishesData[fish[idx]].name}</Text>
             </View>
           </TouchableGradient>

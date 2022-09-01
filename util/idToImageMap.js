@@ -1,4 +1,4 @@
-export default getIdImage = {
+export default idToImageMap = {
   2585: require('../assets/ids/2585.jpg'),
   2586: require('../assets/ids/2586.jpg'),
   2587: require('../assets/ids/2587.jpg'),
