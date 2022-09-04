@@ -27,7 +27,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/misc/iconForeground.png",
-        "backgroundImage": "./assets/misc/iconBackground.png",
+        "backgroundImage": "./assets/misc/iconBackground.png"
       },
       "package": "com.hardneckSolutions.ffxivFishingBuddy",
       "permissions": []

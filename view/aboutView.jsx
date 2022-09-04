@@ -17,7 +17,8 @@ const styles = StyleSheet.create({
   headerText: {
     color: 'white',
     fontWeight: '600',
-    fontFamily: 'sans-serif-condensed'
+    fontFamily: 'ffFont',
+    fontSize: 40
   },
   description: {
     color: BLUE_FONT,
