@@ -35,9 +35,6 @@ export default function RegionSelect({ navigation }) {
           <Text style={subtitleStyles}>  Fish Guide</Text>
         </View>
       </TouchableGradient>
-      <View style={styles.infoContainer}>
-        
-      </View>
     </ScrollView>
   </>
 }

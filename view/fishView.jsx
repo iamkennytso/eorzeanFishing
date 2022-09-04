@@ -19,7 +19,7 @@ return <ScrollView>
     <Text style={subtitleStyles}>Description:</Text>
     <Text style={fontColorStyle}>{description}</Text>
     <Text style={styles.fishSubtitle}>Pools:</Text>
-    {pools.map(poolID => poolsData[poolID].name !== 'unknown'
+    {pools.map(poolID => poolID !== 1
       ? <View style={styles.poolContainer} key={poolID}>
         <TouchableGradient
           customGradientStyles={styles.poolContentContainer} 
@@ -34,16 +34,11 @@ return <ScrollView>
     <View style={tilesContainer}>
       {baits.map(baitID => {
         const isBait = !!baitsData[baitID]
-        const isFish = !!fishesData[baitID]
-        if (!isBait && !isFish) {
-          console.log(baitID)
-        }
         return <View style={tileContainer} key={baitID}>
           <TouchableGradient
             customGradientStyles={customTileGradient}
             onPress={() => isBait 
               ? navigation.navigate(BAIT_VIEW, { bait: baitsData[baitID] })
-              // ? null
               : navigation.navigate(FISH_VIEW, { fish: fishesData[baitID] } )
             }
           >

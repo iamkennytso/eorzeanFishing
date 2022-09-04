@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { View, StyleSheet, Image, Text  } from 'react-native';
 import { fishIdxToId } from '../data/fishes';
-import { BLUE_FONT } from '../styles/variables';
+import { BLUE_FONT, GREEN_GRADIENT_COLORS } from '../styles/variables';
 import idToImageMap from '../util/idToImageMap';
 import { fishesData } from '../data';
 import { FISH_VIEW } from '../const/views';
@@ -35,8 +35,6 @@ const customFishGradientStyles = {
   justifyContent: 'center',
   alignItems: 'center',
 }
-
-const greenGradient = ['#31c272', '#29b659']
 
 export default function FishGuide({ navigation }) {
   const [selectedPage, setSelectedPage] = useState(0);
@@ -88,7 +86,7 @@ export default function FishGuide({ navigation }) {
               customGradientStyles={customFishGradientStyles} 
               onPress={() => navigation.navigate(FISH_VIEW, { fish: fishesData[fishId] })}
               onLongPress={() => handleSaveCaughtFish(fishId)}
-              gradientColors={caughtFish[fishId] ? greenGradient : undefined}
+              gradientColors={caughtFish[fishId] ? GREEN_GRADIENT_COLORS : undefined}
             >
               <Image source={idToImageMap[fishId]} />
             </TouchableGradient>
@@ -129,7 +127,7 @@ const styles = StyleSheet.create({
     color: '#FFD700',
     fontSize: 18,
     textShadowColor: '#FFD700',
-    textShadowOffset: {width: 1, height: 1},
+    textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 5
   },
   pageText: {
@@ -172,5 +170,4 @@ const styles = StyleSheet.create({
       color: BLUE_FONT,
       fontSize: 20
     }
-  
 });

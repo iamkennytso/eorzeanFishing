@@ -6,10 +6,11 @@ import { requestTrackingPermissionsAsync } from 'expo-tracking-transparency';
 
 import { RegionSelect, AreaSelect, PoolView, FishView, BaitView, FishGuide, AboutView } from './view';
 import { ABOUT_VIEW, AREA_SELECT, BAIT_VIEW, FISH_GUIDE, FISH_VIEW, POOL_VIEW, REGION_SELECT } from './const/views.js'
-import { BLUE_FONT } from './styles/variables';
+import { BLUE_BACKGROUND, BLUE_FONT, CONTAINER_BORDER_COLOR } from './styles/variables';
 import HeaderBar from './components/HeaderBar';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,17 +18,22 @@ const customReactNavigationTheme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    background: '#0000FF'
+    background: BLUE_BACKGROUND
   }
 }
+
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   useEffect(() => {
     (async () => {
-      const { status } = await requestTrackingPermissionsAsync();
-      if (status === 'granted') {
-        console.log('Tracking Permission Granted');
+      const grantedPermission = await AsyncStorage.getItem('trackingPermission')
+      if (!grantedPermission) {
+        const { status } = await requestTrackingPermissionsAsync();
+        if (status === 'granted') {
+          await AsyncStorage.setItem('trackingPermission', 'true')
+          console.log('Tracking Permission Granted');
+        }
       }
     })();
   }, []);
@@ -37,7 +43,6 @@ export default function App() {
   });
 
   const onLayoutRootView = useCallback(async () => {
-    console.log('yo')
     if (fontsLoaded) {
       await SplashScreen.hideAsync();
     }
@@ -55,7 +60,7 @@ export default function App() {
             initialRouteName={REGION_SELECT}
             screenOptions={{
               headerStyle: {
-                backgroundColor: '#0000FF',
+                backgroundColor: BLUE_BACKGROUND,
               },
               headerTintColor: BLUE_FONT
             }}
@@ -79,8 +84,8 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS === 'android' ? RNStatusBar.currentHeight : 0,
     flex: 1,
     padding: 5,
-    backgroundColor: '#0000FF',
-    borderColor: 'lightgrey',
+    backgroundColor: BLUE_BACKGROUND,
+    borderColor: CONTAINER_BORDER_COLOR,
     borderWidth: 3,
     borderRadius: 15,
   },

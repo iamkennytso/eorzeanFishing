@@ -1,8 +1,9 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { StyleSheet, TouchableHighlight } from 'react-native';
+import { BLUE_GRADIENT_COLORS, TOUCHABLE_UNDERLAY_COLOR } from '../styles/variables';
 
-export default TouchableGradient = ({ children, onPress, onLongPress = () => null, customHighlightStyles = {}, customGradientStyles = {}, gradientColors = ['#312CD6', '#2920BD'] }) => (
-  <TouchableHighlight style={{ ...styles.highlight, ...customHighlightStyles }} onPress={onPress} onLongPress={onLongPress} underlayColor='#5150C6' >
+export default TouchableGradient = ({ children, onPress, onLongPress = () => null, customHighlightStyles = {}, customGradientStyles = {}, gradientColors = BLUE_GRADIENT_COLORS }) => (
+  <TouchableHighlight style={{ ...styles.highlight, ...customHighlightStyles }} onPress={onPress} onLongPress={onLongPress} underlayColor={TOUCHABLE_UNDERLAY_COLOR} >
     <LinearGradient style={{...styles.gradient, ...customGradientStyles}} colors={gradientColors}>
       {children}
     </LinearGradient>
