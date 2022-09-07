@@ -23,5 +23,5 @@
     * Make sure your code is commented and easy to read.
     * Attribute any 3rd parties as necessary.
     * Create your pull request to the appropriate place.
-## 4. Create a PR from your branch to the repo's dev branch
+## 4. Create a PR from your branch to the repo's `dev` branch
 ## 5. Address PR comments, if any, and then it should be ready to be merged!

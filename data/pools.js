@@ -106,7 +106,7 @@ export default pools = {
   105: { "name": "The Lavender Beds", "fish": [4932, 4945, 4942, 4951, 4963, 4968, 4973, 4975, 7923], "image": "/w/images/thumb/6/64/Lavender_Beds-Fishing.jpg/500px-Lavender_Beds-Fishing.jpg", "level": 30, "type": 0 },
   106: { "name": "The Goblet", "fish": [4935, 4943, 4948, 4952, 4959, 4965, 4978, 5011, 7919], "image": "/w/images/thumb/f/f6/The_Goblet-Fishing.jpg/500px-The_Goblet-Fishing.jpg", "level": 30, "type": 0 },
   107: { "name": "Rhotano Sea (Privateer Forecastle)", "fish": [4871, 4874, 4886, 4902, 4896, 5462, 4888, 4917, 4920, 8753], "image": "/w/images/0/0f/Fishing_Log%3A_Rhotano_Sea_%28Privateer_Forecastle%29-Fishing.jpg", "level": 50, "type": 1 },
-  108: { "name": "Rhotano Sea (Privateer Sterncastle)", "fish": [4869, 4886, 4897, 4911, 4904, 4913, 4914, 4923, 4919, 8754], "image": "/w/images/e/e4/Rhotano_Sea_%28Privateer_Sterncastle%29-Fishing.jpg", "level": 1, "type": 1 },
+  108: { "name": "Rhotano Sea (Privateer Sterncastle)", "fish": [4869, 4886, 4897, 4911, 4904, 4913, 4914, 4923, 4919, 8754], "image": "/w/images/e/e4/Rhotano_Sea_%28Privateer_Sterncastle%29-Fishing.jpg", "level": 50, "type": 1 },
   109: { "name": "Riversmeet", "fish": [4937], "image": "/w/images/3/37/Riversmeet-Fishing.jpg" },
   111: { "name": "Unfrozen Pond", "fish": [4937], "image": "/w/images/2/2b/Unfrozen_Pond-Fishing.jpg" },
   112: { "name": "Clearpool", "fish": [4937], "image": "/w/images/c/c2/Clearpool-Fishing.jpg" },
