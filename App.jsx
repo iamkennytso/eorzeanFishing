@@ -1,8 +1,7 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { SafeAreaView, StyleSheet,  StatusBar as RNStatusBar, View } from 'react-native';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { requestTrackingPermissionsAsync } from 'expo-tracking-transparency';
 
 import { RegionSelect, AreaSelect, PoolView, FishView, BaitView, FishGuide, AboutView } from './view';
 import { ABOUT_VIEW, AREA_SELECT, BAIT_VIEW, FISH_GUIDE, FISH_VIEW, POOL_VIEW, REGION_SELECT } from './const/views.js'
@@ -25,19 +24,6 @@ const customReactNavigationTheme = {
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
-  useEffect(() => {
-    (async () => {
-      const grantedPermission = await AsyncStorage.getItem('trackingPermission')
-      if (!grantedPermission) {
-        const { status } = await requestTrackingPermissionsAsync();
-        if (status === 'granted') {
-          await AsyncStorage.setItem('trackingPermission', 'true')
-          console.log('Tracking Permission Granted');
-        }
-      }
-    })();
-  }, []);
-
   const [fontsLoaded] = useFonts({
     'ffFont': require('./assets/misc/OPTIEngeEtienne.otf'),
   });

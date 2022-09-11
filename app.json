@@ -3,7 +3,7 @@
     "name": "FFXIV Fishing Buddy",
     "slug": "ffxiv-fishing-buddy",
     "owner": "hardnecksolutions",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/misc/fullIcon.png",
     "userInterfaceStyle": "light",
@@ -22,7 +22,8 @@
       "supportsTablet": false,
       "icon": "./assets/misc/fullIcon.png",
       "bundleIdentifier": "com.hardneckSolutions.ffxivFishingBuddy",
-      "infoPlist": {}
+      "infoPlist": {},
+      "buildNumber": "5"
     },
     "android": {
       "adaptiveIcon": {
@@ -34,9 +35,6 @@
     },
     "web": {
       "favicon": "./assets/misc/fullIcon.png"
-    },
-    "plugins": [
-      "expo-tracking-transparency"
-    ]
+    }
   }
 }
