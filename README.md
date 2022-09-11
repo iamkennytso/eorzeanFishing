@@ -2,12 +2,14 @@
 
 Open Source project for easy to access information on Final Fantasy 14's fishing.
 
+## Development
+
 Build with React Native and Expo.
 
 Install dependancies with `npm install`
 Start with `expo start`
 
-##Support
+## Support
 
 Please email hardnecksolutions@gmail.com for any support questions.
 
