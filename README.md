@@ -2,6 +2,10 @@
 
 Open Source project for easy to access information on Final Fantasy 14's fishing.
 
+Android Play Store Status: In Review
+
+Apple App Store Status: In Review
+
 ## Development
 
 Build with React Native and Expo.
