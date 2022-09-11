@@ -11,6 +11,11 @@ export default function AboutView() {
     <Text style={styles.description}>Splash Screen Model: <Text style={styles.hyperlink} onPress={() => Linking.openURL('https://www.twitch.tv/yamikisaragi')}>YamiKisaragi</Text></Text>
     <Text style={styles.description}>Fishing Data: <Text style={styles.hyperlink} onPress={() => Linking.openURL('https://xivapi.com/')}>xivapi.com</Text></Text>
     <Text style={styles.description}>Pool Images: <Text style={styles.hyperlink} onPress={() => Linking.openURL('https://ffxiv.gamerescape.com/wiki/Main_Page')}>GamerEscape</Text></Text>
+    <Text style={styles.description}>
+      FINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd.
+      All in-game graphics are property of SQUARE ENIX CO., LTD. All Rights Reserved.
+      "FFXIV Fishing Buddy" is a non-official application without any link with Square Enix Holdings Co., Ltd.
+    </Text>
   </ScrollView>
 }
 
