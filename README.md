@@ -11,11 +11,11 @@ Start with `expo start`
 
 ## Support
 
-Please email hardnecksolutions@gmail.com for any support questions.
+Please view the support document at [Support](docs/SUPPORT.md)
 
 ## Upcoming
 
-More in depth read me to come, please check [CONTRIBUTING](CONTRIBUTING.md) for now.
+More in depth read me to come, please check [CONTRIBUTING](docs/CONTRIBUTING.md) for now.
 
 ## Credits
 FINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd.
