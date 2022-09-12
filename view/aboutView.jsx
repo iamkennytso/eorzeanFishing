@@ -4,9 +4,9 @@ import { BLUE_FONT } from '../styles/variables';
 
 export default function AboutView() {
   return <ScrollView>
-    <Text style={{ ...titleStyles, ...styles.headerText}}>FFXIV Fishing Buddy</Text>
+    <Text style={{ ...titleStyles, ...styles.headerText}}>Eorzean Fishing</Text>
     <Text style={styles.description}>App only contains data in ARR for now and will be updated with expansions at a later time.</Text>
-    <Text style={styles.description}>This app is open source! If you wish to contribute, please visit <Text style={styles.hyperlink} onPress={() => Linking.openURL('https://github.com/iamkennytso/ffxivFishingBuddy')}>the repository. </Text></Text>
+    <Text style={styles.description}>This app is open source! If you wish to contribute, please visit <Text style={styles.hyperlink} onPress={() => Linking.openURL('https://github.com/iamkennytso/eorzeanFishing')}>the repository. </Text></Text>
     <Text style={styles.description}>Any questions or suggestions please email hardnecksolutions@gmail.com</Text>
     <Text style={styles.description}>Splash Screen Model: <Text style={styles.hyperlink} onPress={() => Linking.openURL('https://www.twitch.tv/yamikisaragi')}>YamiKisaragi</Text></Text>
     <Text style={styles.description}>Fishing Data: <Text style={styles.hyperlink} onPress={() => Linking.openURL('https://xivapi.com/')}>xivapi.com</Text></Text>

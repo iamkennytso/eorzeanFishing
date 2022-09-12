@@ -9,7 +9,7 @@ export default function RegionSelect({ navigation }) {
   return <>
     <View style={styles.header}>
       <Image source={require('../assets/misc/fishingSymbol.png')} />
-      <Text style={{ ...titleStyles, ...styles.headerText}}>FFXIV Fishing Buddy</Text>
+      <Text style={{ ...titleStyles, ...styles.headerText}}>Eorzean Fishing</Text>
       <TouchableGradient 
         customGradientStyles={{width: 22}}
         onPress={() => navigation.navigate(ABOUT_VIEW)}
