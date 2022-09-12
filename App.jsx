@@ -9,7 +9,6 @@ import { BLUE_BACKGROUND, BLUE_FONT, CONTAINER_BORDER_COLOR } from './styles/var
 import HeaderBar from './components/HeaderBar';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Stack = createNativeStackNavigator();
 

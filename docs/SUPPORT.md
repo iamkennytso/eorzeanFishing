@@ -1,6 +1,6 @@
 # SUPPORT
 
-FFXIV Fishing Buddy is an open source project, and therefore welcomes helpful contributions. If you're running into any problems, or have a suggestion, feel free to open up an issue on github.
+Eorzean Fishing is an open source project, and therefore welcomes helpful contributions. If you're running into any problems, or have a suggestion, feel free to open up an issue on github.
 
 ## Discord
 

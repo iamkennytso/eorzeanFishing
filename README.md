@@ -1,4 +1,4 @@
-# FFXIV Fishing Buddy
+# Eorzean Fishing
 
 Open Source project for easy to access information on Final Fantasy 14's fishing.
 
@@ -22,4 +22,4 @@ FINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd.
 
 All in-game graphics are property of SQUARE ENIX CO., LTD. All Rights Reserved.
 
-"FFXIV Fishing Buddy" is a non-official application without any link with Square Enix Holdings Co., Ltd.
+"Eorzean Fishing" is a non-official application without any link with Square Enix Holdings Co., Ltd.
