@@ -3,7 +3,7 @@
     "name": "Eorzean Fishing",
     "slug": "eorzean-fishing",
     "owner": "hardnecksolutions",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/misc/fullIcon.png",
     "userInterfaceStyle": "light",
