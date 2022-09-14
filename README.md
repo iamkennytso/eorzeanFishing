@@ -26,4 +26,4 @@ FINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd.
 
 All in-game graphics are property of SQUARE ENIX CO., LTD. All Rights Reserved.
 
-"Eorzean Fishing" is a non-official application without any link with Square Enix Holdings Co., Ltd.
+"Eorzean Fishing" is a non-official application and is not affiliated with Square Enix Holdings Co., Ltd.
