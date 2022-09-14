@@ -10,7 +10,7 @@ import { servers } from '../data';
 
 export default function ProfileSearch() {
   const { user, getUserInfo } = useContext(UserContext)
-  const { storedId } = user || {}
+  const { id: storedId } = user || {}
   const [loadingCandidates, setLoadingCandidates] = useState(false);
   const [loadingCandidate, setLoadingCandidate] = useState(false)
   const [selectedCandidateIdx, setSelectedCandidateIdx] = useState(null)

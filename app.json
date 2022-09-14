@@ -23,7 +23,7 @@
       "icon": "./assets/misc/fullIcon.png",
       "bundleIdentifier": "com.hardneckSolutions.eorzeanFishing",
       "infoPlist": {},
-      "buildNumber": "4"
+      "buildNumber": "5"
     },
     "android": {
       "adaptiveIcon": {
