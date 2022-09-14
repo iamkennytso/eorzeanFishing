@@ -21,6 +21,7 @@ export default function ProfileView({ navigation }) {
   }
 
   const getSuggestedPool = () => {
+    if (!level) return
     let userLevel = level < 5 ? 5 : level
     while (userLevel !== 0) {
       if (poolLevelToIdToFish[userLevel]) {
@@ -57,13 +58,13 @@ export default function ProfileView({ navigation }) {
             color={BLUE_FONT}
           />
         </TouchableGradient>
-        <TouchableGradient  onPress={() => handleRefreshUserData()}>
+        {user &&<TouchableGradient  onPress={() => handleRefreshUserData()}>
           <Icon
             name='autorenew'
             size={36}
             color={BLUE_FONT}
           />
-        </TouchableGradient>
+        </TouchableGradient>}
       </View>
     </View>
     {loading && <ActivityIndicator size='large' color={BLUE_FONT} />}
