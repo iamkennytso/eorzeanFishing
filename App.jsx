@@ -38,7 +38,7 @@ export default function App() {
           AsyncStorage.getItem('caughtFish'), 
           AsyncStorage.getItem('userData')
         ])
-        setCaughtFish(JSON.parse(caughtFishData))
+        setCaughtFish(JSON.parse(caughtFishData) || {})
         setUser(JSON.parse(userData))
         setRetrievedStorageData(true)
       } catch(e) {
