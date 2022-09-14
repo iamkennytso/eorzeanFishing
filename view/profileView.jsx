@@ -1,32 +1,72 @@
 import { useState, useContext } from 'react';
-import { StyleSheet, Text, Image, ScrollView, View  } from 'react-native';
+import { StyleSheet, Text, Image, ScrollView, View, ActivityIndicator } from 'react-native';
 import { subtitleStyles, titleStyles } from '../styles/styles'
 import { UserContext } from '../util/context';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { BLUE_FONT } from '../styles/variables';
+import { POOL_VIEW, PROFILE_SEARCH } from '../const/views';
+import { poolLevelToIdToFish } from '../data/pools';
+import { poolsData } from '../data';
 
 const fisherClassJobIdx = 30
-export default function ProfileView() {
+export default function ProfileView({ navigation }) {
   const [loading, setLoading] = useState(false);
-  const { user } = useContext(UserContext)
-  const { avatarUrl, name, server, level} = user || {};
+  const { user, getUserInfo, caughtFish } = useContext(UserContext)
+  const { avatarUrl, name, server, level, id } = user || {};
+
+  const handleRefreshUserData = async () => {
+    if (loading) return
+    setLoading(true)
+    await getUserInfo(id)
+    setLoading(false)
+  }
+
+  const getSuggestedPool = () => {
+    let userLevel = level < 5 ? 5 : level
+    while (userLevel !== 0) {
+      if (poolLevelToIdToFish[userLevel]) {
+        const possiblePools = Object.keys(poolLevelToIdToFish[userLevel])
+        let poolWithMostUncaughtFish = ''
+        let uncaughtFish = 0
+        for (let pool of possiblePools) {
+          const uncaughtFishInPool = poolLevelToIdToFish[userLevel][pool].filter(fishId => !(caughtFish[fishId]))
+          if (uncaughtFishInPool.length > uncaughtFish) {
+            uncaughtFish = uncaughtFishInPool.length
+            poolWithMostUncaughtFish = pool
+          }
+        }
+        if (uncaughtFish) {
+          return poolWithMostUncaughtFish
+        }
+      }
+      userLevel--
+    }
+  }
+
+  const suggestedPool = getSuggestedPool()
+
   return <ScrollView>
     <Text style={titleStyles}>Angler Profile</Text>
     <View style={styles.avatarContainer}>
-      <Image source={avatarUrl ? { uri: avatarUrl } : require('../assets/misc/defaultAvatar.jpg')}></Image>
+      <Image style={styles.avatarImage} source={avatarUrl ? { uri: avatarUrl } : require('../assets/misc/defaultAvatar.jpg')}></Image>
       <View style={styles.iconContainer}>
-        <Icon 
-          name='edit'
-          size={36}
-          color={BLUE_FONT}
-        />
-        <Icon 
-          name='autorenew'
-          size={36}
-          color={BLUE_FONT}
-        />
+        <TouchableGradient onPress={() => navigation.navigate(PROFILE_SEARCH)}>
+          <Icon
+            name='edit'
+            size={36}
+            color={BLUE_FONT}
+          />
+        </TouchableGradient>
+        <TouchableGradient  onPress={() => handleRefreshUserData()}>
+          <Icon
+            name='autorenew'
+            size={36}
+            color={BLUE_FONT}
+          />
+        </TouchableGradient>
       </View>
     </View>
+    {loading && <ActivityIndicator size='large' color={BLUE_FONT} />}
     <View style={styles.propertyContainer}>
       <Text style={styles.propertyText}>Name:</Text> 
       <Text style={styles.propertyText}>{name || '--'}</Text>
@@ -39,6 +79,14 @@ export default function ProfileView() {
       <Text style={styles.propertyText}>Level:</Text> 
       <Text style={styles.propertyText}>{level || '--'}</Text>
     </View>
+    <View style={styles.suggestedPoolContainer}>
+      <TouchableGradient 
+        onPress={() => navigation.navigate(POOL_VIEW, {poolData: poolsData[suggestedPool]})}
+        customGradientStyles={{ padding: 10}}
+      >
+        <Text style={styles.suggestedPoolText}>Suggested Fishing Pool</Text>
+      </TouchableGradient>
+    </View>
   </ScrollView>
 }
 
@@ -49,6 +97,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginBottom: 20,
     marginTop: 20
+  },
+  avatarImage: {
+    width: 96,
+    height: 96
   },
   propertyContainer: {
     display: 'flex',
@@ -64,8 +116,13 @@ const styles = StyleSheet.create({
     ...subtitleStyles,
     marginTop: 10
   },
-  hyperlink: {
-    color: 'white',
-    textDecorationLine: 'underline'
+  suggestedPoolContainer: {
+    padding: 10,
+    marginTop: 10
+  },
+  suggestedPoolText: {
+    color: BLUE_FONT,
+    fontSize: 20,
+    textAlign: 'center'
   }
 });

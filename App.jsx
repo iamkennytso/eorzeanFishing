@@ -5,12 +5,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { RegionSelect, AreaSelect, PoolView, FishView, BaitView, FishGuide, AboutView, ProfileView } from './view';
-import { ABOUT_VIEW, AREA_SELECT, BAIT_VIEW, FISH_GUIDE, FISH_VIEW, POOL_VIEW, PROFILE_VIEW, REGION_SELECT } from './const/views.js'
+import { ABOUT_VIEW, AREA_SELECT, BAIT_VIEW, FISH_GUIDE, FISH_VIEW, POOL_VIEW, PROFILE_SEARCH, PROFILE_VIEW, REGION_SELECT } from './const/views.js'
 import { BLUE_BACKGROUND, BLUE_FONT, CONTAINER_BORDER_COLOR } from './styles/variables';
 import HeaderBar from './components/HeaderBar';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { UserContext } from './util/context';
+import ProfileSearch from './view/profileSearchView';
+import axios from 'axios';
 
 const Stack = createNativeStackNavigator();
 
@@ -55,6 +57,25 @@ export default function App() {
     'ffFont': require('./assets/misc/OPTIEngeEtienne.otf'),
   });
 
+  const getUserInfo = async lodestoneId => {
+    try {
+      const lodestonePayload = await axios.get(`https://xivapi.com/character/${lodestoneId}`)
+      const { data } = lodestonePayload
+      const updatedUser = {
+        avatarUrl: data.Character.Avatar,
+        id: data.Character.ID,
+        level: data.Character.ClassJobs.find(job => job.ClassID === 18).Level,
+        name: data.Character.Name,
+        server: data.Character.Server,
+      }
+      await AsyncStorage.setItem('userData', JSON.stringify(updatedUser))
+      setUser(updatedUser)
+    } catch(e) {
+      console.error(e)
+    }
+    return
+  }
+
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded && retrievedStorageData) {
       await SplashScreen.hideAsync();
@@ -66,8 +87,8 @@ export default function App() {
   }
 
   return (
-    <View style={{flex: 1}} onLayout={onLayoutRootView}>
-      <UserContext.Provider value={{ user, caughtFish, handleLongPressFish }}>
+    <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
+      <UserContext.Provider value={{ user, caughtFish, handleLongPressFish, getUserInfo }}>
         <NavigationContainer theme={customReactNavigationTheme} >
           <SafeAreaView style={styles.container}>
             <Stack.Navigator
@@ -87,7 +108,7 @@ export default function App() {
               <Stack.Screen name={FISH_GUIDE} options={({ navigation }) => ({ headerTitle: () => <HeaderBar navigation={navigation} />})} component={FishGuide} />
               <Stack.Screen name={ABOUT_VIEW} options={({ navigation }) => ({ headerTitle: () => <HeaderBar navigation={navigation} />})} component={AboutView} />
               <Stack.Screen name={PROFILE_VIEW} options={({ navigation }) => ({ headerTitle: () => <HeaderBar navigation={navigation} />})} component={ProfileView} />
-
+              <Stack.Screen name={PROFILE_SEARCH} options={({ navigation }) => ({ headerTitle: () => <HeaderBar navigation={navigation} />})} component={ProfileSearch} />
             </Stack.Navigator>
           </SafeAreaView>
         </NavigationContainer>

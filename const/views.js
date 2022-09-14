@@ -6,3 +6,4 @@ export const BAIT_VIEW = 'BaitView';
 export const FISH_GUIDE = 'FishGuide';
 export const ABOUT_VIEW = 'AboutView';
 export const PROFILE_VIEW = 'ProfileView';
+export const PROFILE_SEARCH = 'ProfileSearch'
