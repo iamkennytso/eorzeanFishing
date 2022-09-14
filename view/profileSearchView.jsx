@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { StyleSheet, Text, TextInput, ScrollView, View, ActivityIndicator, Image  } from 'react-native';
+import { StyleSheet, Text, TextInput, ScrollView, View, ActivityIndicator, Image, Keyboard  } from 'react-native';
 import { subtitleStyles, titleStyles } from '../styles/styles'
 import { UserContext } from '../util/context';
 import { BLUE_FONT } from '../styles/variables';
@@ -10,18 +10,19 @@ import { servers } from '../data';
 
 export default function ProfileSearch() {
   const { user, getUserInfo } = useContext(UserContext)
-  const { name: storedName, server: storedServer, id: storedId } = user || {}
+  const { storedId } = user || {}
   const [loadingCandidates, setLoadingCandidates] = useState(false);
   const [loadingCandidate, setLoadingCandidate] = useState(false)
   const [selectedCandidateIdx, setSelectedCandidateIdx] = useState(null)
-  const [name, onChangeName] = useState('hardneck' || storedName || 'Name')
-  const [server, setServer] = useState(storedServer)
+  const [name, onChangeName] = useState('Name')
+  const [server, setServer] = useState()
   const [candidates, setCandidates] = useState([])
   const [errorMessage, setErrorMessage] = useState('')
 
   const searchForCandidates = async () => {
     // TODO: disable search button visually when searching
     // TODO: support more than 50 search results
+    Keyboard.dismiss()
     if (loadingCandidates) {
       return
     }
