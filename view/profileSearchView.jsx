@@ -2,120 +2,11 @@ import { useState, useContext } from 'react';
 import { StyleSheet, Text, TextInput, ScrollView, View, ActivityIndicator, Image  } from 'react-native';
 import { subtitleStyles, titleStyles } from '../styles/styles'
 import { UserContext } from '../util/context';
-import Icon from 'react-native-vector-icons/MaterialIcons'
 import { BLUE_FONT } from '../styles/variables';
 import SelectDropdown from 'react-native-select-dropdown'
 import TouchableGradient from '../components/TouchableGradient';
 import axios from 'axios'
-
-const servers = [
-  "Adamantoise",
-  "Aegis",
-  "Alexander",
-  "Anima",
-  "Asura",
-  "Atomos",
-  "Bahamut",
-  "Balmung",
-  "Behemoth",
-  "Belias",
-  "Brynhildr",
-  "Cactuar",
-  "Carbuncle",
-  "Cerberus",
-  "Chocobo",
-  "Coeurl",
-  "Diabolos",
-  "Durandal",
-  "Excalibur",
-  "Exodus",
-  "Faerie",
-  "Famfrit",
-  "Fenrir",
-  "Garuda",
-  "Gilgamesh",
-  "Goblin",
-  "Gungnir",
-  "Hades",
-  "Hyperion",
-  "Ifrit",
-  "Ixion",
-  "Jenova",
-  "Kujata",
-  "Lamia",
-  "Leviathan",
-  "Lich",
-  "Louisoix",
-  "Malboro",
-  "Mandragora",
-  "Masamune",
-  "Mateus",
-  "Midgardsormr",
-  "Moogle",
-  "Odin",
-  "Omega",
-  "Pandaemonium",
-  "Phoenix",
-  "Ragnarok",
-  "Ramuh",
-  "Ridill",
-  "Sargatanas",
-  "Shinryu",
-  "Shiva",
-  "Siren",
-  "Tiamat",
-  "Titan",
-  "Tonberry",
-  "Typhon",
-  "Ultima",
-  "Ultros",
-  "Unicorn",
-  "Valefor",
-  "Yojimbo",
-  "Zalera",
-  "Zeromus",
-  "Zodiark",
-  "Spriggan",
-  "Twintania",
-  "Bismarck",
-  "Ravana",
-  "Sephirot",
-  "Sophia",
-  "Zurvan",
-  // what are these?
-  // "HongYuHai",
-  // "ShenYiZhiDi",
-  // "LaNuoXiYa",
-  // "HuanYingQunDao",
-  // "MengYaChi",
-  // "YuZhouHeYin",
-  // "WoXianXiRan",
-  // "ChenXiWangZuo",
-  // "BaiYinXiang",
-  // "BaiJinHuanXiang",
-  // "ShenQuanHen",
-  // "ChaoFengTing",
-  // "LvRenZhanQiao",
-  // "FuXiaoZhiJian",
-  // "Longchaoshendian",
-  // "MengYuBaoJing",
-  // "ZiShuiZhanQiao",
-  // "YanXia",
-  // "JingYuZhuangYuan",
-  // "MoDuNa",
-  // "HaiMaoChaWu",
-  // "RouFengHaiWan",
-  // "HuPoYuan",
-  // "ShuiJingTa2",
-  // "YinLeiHu2",
-  // "TaiYangHaiAn2",
-  // "YiXiuJiaDe2",
-  // "HongChaChuan2",
-  "Alpha",
-  "Phantom",
-  "Raiden",
-  "Sagittarius"
-]
+import { servers } from '../data';
 
 export default function ProfileSearch() {
   const { user, getUserInfo } = useContext(UserContext)
@@ -151,6 +42,7 @@ export default function ProfileSearch() {
   }
 
   const handleCandidatePress = async (lodestoneId, candidateIdx) => {
+    // visually disable selecting other candidates when getting user info
     if (loadingCandidate) {
       return
     }
@@ -162,7 +54,7 @@ export default function ProfileSearch() {
   }
 
   return <>
-    <Text style={titleStyles}>Angler Search{JSON.stringify(loadingCandidate)}</Text>
+    <Text style={titleStyles}>Angler Search</Text>
     <TextInput
       style={styles.inputBox}
       onChangeText={onChangeName}
@@ -208,7 +100,6 @@ export default function ProfileSearch() {
             </TouchableGradient>
           </View>
         })
-        
       }
     </ScrollView>
   </>
@@ -264,7 +155,6 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   candidateContainer: {
-    // margin: 10,
     padding: 10
   },
   candidateContentContainer: {

@@ -8,7 +8,6 @@ import { POOL_VIEW, PROFILE_SEARCH } from '../const/views';
 import { poolLevelToIdToFish } from '../data/pools';
 import { poolsData } from '../data';
 
-const fisherClassJobIdx = 30
 export default function ProfileView({ navigation }) {
   const [loading, setLoading] = useState(false);
   const { user, getUserInfo, caughtFish } = useContext(UserContext)
@@ -41,6 +40,7 @@ export default function ProfileView({ navigation }) {
       }
       userLevel--
     }
+    return null
   }
 
   const suggestedPool = getSuggestedPool()
@@ -79,14 +79,14 @@ export default function ProfileView({ navigation }) {
       <Text style={styles.propertyText}>Level:</Text> 
       <Text style={styles.propertyText}>{level || '--'}</Text>
     </View>
-    <View style={styles.suggestedPoolContainer}>
+    {suggestedPool && <View style={styles.suggestedPoolContainer}>
       <TouchableGradient 
         onPress={() => navigation.navigate(POOL_VIEW, {poolData: poolsData[suggestedPool]})}
         customGradientStyles={{ padding: 10}}
       >
         <Text style={styles.suggestedPoolText}>Suggested Fishing Pool</Text>
       </TouchableGradient>
-    </View>
+    </View>}
   </ScrollView>
 }
 
