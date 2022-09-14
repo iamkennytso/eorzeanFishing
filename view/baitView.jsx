@@ -4,10 +4,14 @@ import { fishesData, baitProcure } from '../data';
 import { titleStyles, subtitleStyles, fontColorStyle, tilesContainer, customTileGradient, tileContainer, tileContentContainer, tileText } from '../styles/styles'
 import TouchableGradient from '../components/TouchableGradient';
 import idToImageMap from '../util/idToImageMap';
+import { useContext } from 'react';
+import { UserContext } from '../util/context';
+import { GREEN_GRADIENT_COLORS } from '../styles/variables';
 
 export default function BaitView({ route, navigation }) {
   const { bait } = route.params;
   const { name, level, description, fishes, acquisition } = bait;
+  const { caughtFish, handleLongPressFish } = useContext(UserContext)
 
   return <ScrollView>
     <View style={styles.imageContainer}>
@@ -21,7 +25,9 @@ export default function BaitView({ route, navigation }) {
     <View style={tilesContainer}>
       {fishes.map(fishID => <View style={tileContainer} key={fishID}>
         <TouchableGradient
+          gradientColors={caughtFish[fishID] ? GREEN_GRADIENT_COLORS : undefined}
           customGradientStyles={customTileGradient}
+          onLongPress={() => handleLongPressFish(fishID)}
           onPress={() => navigation.navigate(FISH_VIEW, { fish: fishesData[fishID] } )}
         >
           <View style={tileContentContainer}> 

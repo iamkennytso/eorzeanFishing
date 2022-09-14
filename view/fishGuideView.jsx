@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { View, StyleSheet, Image, Text  } from 'react-native';
 import { fishIdxToId } from '../data/fishes';
 import { BLUE_FONT, GREEN_GRADIENT_COLORS } from '../styles/variables';
 import idToImageMap from '../util/idToImageMap';
 import { fishesData } from '../data';
 import { FISH_VIEW } from '../const/views';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { UserContext } from '../util/context';
 
 const lastPage = Math.ceil(fishIdxToId.length / 25) - 1
 
@@ -38,36 +38,13 @@ const customFishGradientStyles = {
 
 export default function FishGuide({ navigation }) {
   const [selectedPage, setSelectedPage] = useState(0);
-  const [caughtFish, setCaughtFish] = useState({})
   const start = 25 * selectedPage
   const end = start + 25
   const data = fishIdxToId.slice(start, end)
-  
-  useEffect(() => {
-    getUserData()
-  },[])
-
-  const getUserData = async () => {
-    try {
-      const fishData = await AsyncStorage.getItem('caughtFish')
-      if (fishData) {
-        setCaughtFish(JSON.parse(fishData))
-      }
-      return fishData != null ? JSON.parse(fishData) : null;
-    } catch(e) {
-      console.error(e)
-    }
-  }
-
-  const handleSaveCaughtFish = async fishId => {
-    const updatedCaughtFish = {...caughtFish, [fishId]: caughtFish[fishId] ? false : true}
-    await AsyncStorage.mergeItem('caughtFish', JSON.stringify(updatedCaughtFish))
-    setCaughtFish(updatedCaughtFish)
-  }
+  const { caughtFish, handleLongPressFish } = useContext(UserContext)
 
   return <>
     <View style={styles.pageSelectContainer}>
-      {/* <LeftArrowSVG /> */}
       {generatePageArray(selectedPage).map(pageNumber => {
         return <TouchableGradient customGradientStyles={pageTile} key={pageNumber} onPress={() => setSelectedPage(pageNumber)}>
           <Text style={pageNumber == selectedPage ? styles.selectedPageText : styles.pageText}>
@@ -75,7 +52,6 @@ export default function FishGuide({ navigation }) {
           </Text>
         </TouchableGradient>
       })}
-      {/* <RightArrowSVG /> */}
     </View>
     <View style={styles.fishGuideContainer}>
       {[1,2,3,4,5].map(row => <View style={styles.fishGuideRow} key={row}>
@@ -85,7 +61,7 @@ export default function FishGuide({ navigation }) {
             <TouchableGradient 
               customGradientStyles={customFishGradientStyles} 
               onPress={() => navigation.navigate(FISH_VIEW, { fish: fishesData[fishId] })}
-              onLongPress={() => handleSaveCaughtFish(fishId)}
+              onLongPress={() => handleLongPressFish(fishId)}
               gradientColors={caughtFish[fishId] ? GREEN_GRADIENT_COLORS : undefined}
             >
               <Image source={idToImageMap[fishId]} />

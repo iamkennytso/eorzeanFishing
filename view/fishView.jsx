@@ -4,11 +4,15 @@ import { baitsData, fishesData, poolsData } from '../data';
 import { titleStyles, subtitleStyles, fontColorStyle, tilesContainer, customTileGradient, tileContainer, tileContentContainer, tileText } from '../styles/styles'
 import TouchableGradient from '../components/TouchableGradient';
 import idToImageMap from '../util/idToImageMap';
+import { useContext } from 'react';
+import { UserContext } from '../util/context';
+import { GREEN_GRADIENT_COLORS } from '../styles/variables';
 
 export default function FishView({ route, navigation }) {
   const { fish } = route.params;
   const { name, level, description, pools, baits, mooches } = fish;
   const canMooch = !!mooches
+  const { caughtFish, handleLongPressFish } = useContext(UserContext)
 
 return <ScrollView>
     <View style={styles.imageContainer}>
@@ -36,7 +40,9 @@ return <ScrollView>
         const isBait = !!baitsData[baitID]
         return <View style={tileContainer} key={baitID}>
           <TouchableGradient
+            gradientColors={!isBait && caughtFish[baitID] ? GREEN_GRADIENT_COLORS : undefined}
             customGradientStyles={customTileGradient}
+            onLongPress={() => !isBait ? handleLongPressFish(baitID) : null}
             onPress={() => isBait 
               ? navigation.navigate(BAIT_VIEW, { bait: baitsData[baitID] })
               : navigation.navigate(FISH_VIEW, { fish: fishesData[baitID] } )
@@ -56,7 +62,9 @@ return <ScrollView>
         {mooches.map(baitID => {
           return <View style={tileContainer} key={baitID}>
             <TouchableGradient
+              gradientColors={caughtFish[baitID] ? GREEN_GRADIENT_COLORS : undefined}
               customGradientStyles={customTileGradient}
+              onLongPress={() => handleLongPressFish(baitID)}
               onPress={() => navigation.navigate(FISH_VIEW, { fish: fishesData[baitID] })}
             >
               <View style={tileContentContainer}> 
