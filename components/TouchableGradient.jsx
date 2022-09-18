@@ -1,14 +1,20 @@
 import { LinearGradient } from 'expo-linear-gradient';
+import { useContext } from 'react';
 import { StyleSheet, TouchableHighlight } from 'react-native';
-import { BLUE_GRADIENT_COLORS, TOUCHABLE_UNDERLAY_COLOR } from '../styles/variables';
+import { THEME } from '../styles/themes';
+import { PRIMARY } from '../styles/variables';
+import { UserContext } from '../util/context';
 
-export default TouchableGradient = ({ children, onPress, onLongPress = () => null, customHighlightStyles = {}, customGradientStyles = {}, gradientColors = BLUE_GRADIENT_COLORS }) => (
-  <TouchableHighlight style={{ ...styles.highlight, ...customHighlightStyles }} onPress={onPress} onLongPress={onLongPress} underlayColor={TOUCHABLE_UNDERLAY_COLOR} >
+export default TouchableGradient = ({ children, onPress, onLongPress = () => null, customHighlightStyles = {}, customGradientStyles = {}, gradientVariant = PRIMARY }) => {
+  const { theme } = useContext(UserContext);
+  const gradientColors = THEME[theme][`${gradientVariant}_GRADIENT`];
+
+  return <TouchableHighlight style={{ ...styles.highlight, ...customHighlightStyles }} onPress={onPress} onLongPress={onLongPress} underlayColor={THEME[theme].TOUCHABLE_UNDERLAY}>
     <LinearGradient style={{...styles.gradient, ...customGradientStyles}} colors={gradientColors}>
       {children}
     </LinearGradient>
   </TouchableHighlight>
-)
+}
 
 const styles = StyleSheet.create({
   highlight: {

@@ -2,14 +2,16 @@ import { useState, useContext } from 'react';
 import { StyleSheet, Text, TextInput, ScrollView, View, ActivityIndicator, Image, Keyboard  } from 'react-native';
 import { subtitleStyles, titleStyles } from '../styles/styles'
 import { UserContext } from '../util/context';
-import { BLUE_FONT } from '../styles/variables';
 import SelectDropdown from 'react-native-select-dropdown'
 import TouchableGradient from '../components/TouchableGradient';
 import axios from 'axios'
 import { servers } from '../data';
+import { THEME } from '../styles/themes';
+import ThemedText from '../components/ThemedText';
+import ThemedDropdown from '../components/ThemedDropdown';
 
 export default function ProfileSearch() {
-  const { user, getUserInfo } = useContext(UserContext)
+  const { user, getUserInfo, theme } = useContext(UserContext)
   const { id: storedId } = user || {}
   const [loadingCandidates, setLoadingCandidates] = useState(false);
   const [loadingCandidate, setLoadingCandidate] = useState(false)
@@ -55,35 +57,27 @@ export default function ProfileSearch() {
   }
 
   return <>
-    <Text style={titleStyles}>Angler Search</Text>
+    <ThemedText style={titleStyles}>Angler Search</ThemedText>
     <TextInput
-      style={styles.inputBox}
+      style={{...styles.inputBox, color: THEME[theme].FONT, borderColor: THEME[theme].FONT }}
       onChangeText={onChangeName}
       value={name}
     />
     <View style={styles.dropdownContainer}>
-      <SelectDropdown
-        buttonStyle={styles.serverDropdown}
-        buttonTextStyle={styles.serverText}
-        data={servers}
-        defaultButtonText={'Select a server'}
-        onSelect={selectedServer => setServer(selectedServer)}
-        buttonTextAfterSelection={() => server}
-        rowTextForSelection={server => server}
-      />
+      <ThemedDropdown dataArray={servers} onSelect={selectedServer => setServer(selectedServer)} selected={server} defaultText='Select a Server' />
     </View>
     <View style={styles.searchButtonContainer}>
       <TouchableGradient onPress={() => searchForCandidates()}>
-        <Text style={styles.searchButtonText}>Search</Text>
+        <ThemedText style={styles.searchButtonText}>Search</ThemedText>
       </TouchableGradient>
     </View>
     <View style={styles.dividerContainer}>
-      <View style={styles.divider} />
+      <View style={{...styles.divider, backgroundColor: THEME[theme].FONT }} />
     </View>
     <ScrollView>
       <Text style={styles.errorText}>{errorMessage}</Text>
       {loadingCandidates
-        ? <ActivityIndicator size='large' color={BLUE_FONT} />
+        ? <ActivityIndicator size='large' color={THEME[theme].FONT} />
         : candidates.map((candidate, candidateIdx) => {
           const { Avatar, ID, Name, Server } = candidate
           return <View style={styles.candidateContainer} key={ID}>
@@ -91,10 +85,10 @@ export default function ProfileSearch() {
                 <View style={styles.candidateContentContainer}>
                   <View style={styles.candidatesContentLeftContainer}>
                     <Image style={styles.candidateAvatar} source={{uri: Avatar}} />
-                    <Text style={styles.candidateText}>{Name} - {Server}</Text>
+                    <ThemedText style={styles.candidateText}>{Name} - {Server}</ThemedText>
                   </View>
                   <View style={styles.statusIndicator}>
-                    {selectedCandidateIdx === candidateIdx && <ActivityIndicator color={BLUE_FONT} />}
+                    {selectedCandidateIdx === candidateIdx && <ActivityIndicator color={THEME[theme].FONT} />}
                     {storedId === ID && <Image style={styles.currentUserIndicator} source={require('../assets/misc/confirmationBadge.png')} /> }
                   </View>
                 </View>
@@ -111,23 +105,6 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 15,
     borderWidth: 1,
-    color: BLUE_FONT,
-    borderColor: BLUE_FONT,
-    fontSize: 20
-  },
-  dropdownContainer: {
-    width: '100%',
-    padding: 10
-  },
-  serverDropdown: {
-    width: '100%',
-    backgroundColor: 'transparent',
-    borderWidth: 1,
-    borderColor: BLUE_FONT,
-  },
-  serverText: {
-    textAlign: 'left',
-    color: BLUE_FONT,
     fontSize: 20
   },
   searchButtonContainer: {
@@ -138,7 +115,6 @@ const styles = StyleSheet.create({
     padding: 15,
     textAlign: 'center',
     fontSize: 20,
-    color: BLUE_FONT
   },
   dividerContainer: {
     padding: 5,
@@ -147,7 +123,6 @@ const styles = StyleSheet.create({
     height: 3,
     borderRadius: 3,
     width: '100%',
-    backgroundColor: BLUE_FONT,
     marginBottom: 10
   },
   errorText: {
@@ -174,7 +149,6 @@ const styles = StyleSheet.create({
     marginRight: 6
   },
   candidateText: {
-    color: BLUE_FONT,
     fontSize: 16
   },
   statusIndicator: {

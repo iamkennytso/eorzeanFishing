@@ -1,11 +1,12 @@
 import { useContext, useState } from 'react';
-import { View, StyleSheet, Image, Text  } from 'react-native';
+import { View, StyleSheet, Image  } from 'react-native';
 import { fishIdxToId } from '../data/fishes';
-import { BLUE_FONT, GREEN_GRADIENT_COLORS } from '../styles/variables';
+import { PRIMARY, SECONDARY } from '../styles/variables';
 import idToImageMap from '../util/idToImageMap';
 import { fishesData } from '../data';
 import { FISH_VIEW } from '../const/views';
 import { UserContext } from '../util/context';
+import ThemedText from '../components/ThemedText';
 
 const lastPage = Math.ceil(fishIdxToId.length / 25) - 1
 
@@ -47,9 +48,9 @@ export default function FishGuide({ navigation }) {
     <View style={styles.pageSelectContainer}>
       {generatePageArray(selectedPage).map(pageNumber => {
         return <TouchableGradient customGradientStyles={pageTile} key={pageNumber} onPress={() => setSelectedPage(pageNumber)}>
-          <Text style={pageNumber == selectedPage ? styles.selectedPageText : styles.pageText}>
+          <ThemedText style={pageNumber == selectedPage ? styles.selectedPageText : styles.pageText}>
             {pageNumber + 1}
-          </Text>
+          </ThemedText>
         </TouchableGradient>
       })}
     </View>
@@ -62,7 +63,7 @@ export default function FishGuide({ navigation }) {
               customGradientStyles={customFishGradientStyles} 
               onPress={() => navigation.navigate(FISH_VIEW, { fish: fishesData[fishId] })}
               onLongPress={() => handleLongPressFish(fishId)}
-              gradientColors={caughtFish[fishId] ? GREEN_GRADIENT_COLORS : undefined}
+              gradientVariant={caughtFish[fishId] ? SECONDARY : PRIMARY}
             >
               <Image source={idToImageMap[fishId]} />
             </TouchableGradient>
@@ -70,8 +71,8 @@ export default function FishGuide({ navigation }) {
         })}
       </View>)}
     </View>
-    <Text style={styles.descriptionText}>Press to view more information</Text>
-    <Text style={styles.descriptionText}>Long press to 'save' a fish</Text>
+    <ThemedText style={styles.descriptionText}>Press to view more information</ThemedText>
+    <ThemedText style={styles.descriptionText}>Long press to 'save' a fish</ThemedText>
   </>
 }
 
@@ -107,7 +108,6 @@ const styles = StyleSheet.create({
     textShadowRadius: 5
   },
   pageText: {
-    color: BLUE_FONT,
     fontSize: 18
   },
   fishGuideContainer: {
@@ -143,7 +143,6 @@ const styles = StyleSheet.create({
       borderRadius: 4
     },
     descriptionText: {
-      color: BLUE_FONT,
       fontSize: 20
     }
 });
