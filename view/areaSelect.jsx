@@ -1,11 +1,14 @@
 // import { useContext} from 'react'
-import { StyleSheet, Text, ScrollView, TouchableHighlight, View, Image } from 'react-native';
+import { StyleSheet, ScrollView, TouchableHighlight, View, Image } from 'react-native';
 import { areasData, poolsData } from '../data';
 import { SimpleAccordion } from 'react-native-simple-accordion';
 import { POOL_VIEW } from '../const/views';
 import TouchableGradient from '../components/TouchableGradient';
 import { subtitleStyles, fontColorStyle } from '../styles/styles'
-import { BLUE_FONT } from '../styles/variables';
+import { useContext } from 'react';
+import { UserContext } from '../util/context';
+import { THEME } from '../styles/themes';
+import ThemedText from '../components/ThemedText';
 
 const getTypeImage = type => {
   let link;
@@ -39,8 +42,8 @@ const areaExpandContent = (poolIDs, navigation) => <View>
       underlayColor='#5150C6'
     >
       <View style={styles.poolContentContainer}>
-        <Text style={fontColorStyle}>{level}</Text>
-        <Text style={fontColorStyle}>{name}</Text>
+        <ThemedText style={fontColorStyle}>{level}</ThemedText>
+        <ThemedText style={fontColorStyle}>{name}</ThemedText>
         {getTypeImage(type)}
       </View>
     </TouchableHighlight>
@@ -49,6 +52,7 @@ const areaExpandContent = (poolIDs, navigation) => <View>
 
 export default function AreaSelect({ navigation, route }) {
   const { region } = route.params;
+  const { theme } = useContext(UserContext)
   const regionAreas = areasData[region];
 
   return <ScrollView>
@@ -58,11 +62,11 @@ export default function AreaSelect({ navigation, route }) {
           <SimpleAccordion
             title={area}
             viewInside={areaExpandContent(regionAreas[area], navigation)}
-            titleStyle={subtitleStyles}
+            titleStyle={{...subtitleStyles, color: THEME[theme].FONT}}
             bannerStyle={transparentBackground}
             viewContainerStyle={transparentBackground}
             showContentInsideOfCard={false}
-            arrowColor={BLUE_FONT}
+            arrowColor={THEME[theme].FONT}
           />
         </TouchableGradient>
       </View>

@@ -1,16 +1,9 @@
-import { BLUE_FONT } from "./variables"
-
-export const fontColorStyle = {
-  color: BLUE_FONT
-}
 export const titleStyles = {
-  fontSize: 25,
-  ...fontColorStyle
+  fontSize: 25
 }
 
 export const subtitleStyles = {
-  fontSize: 20,
-  ...fontColorStyle,
+  fontSize: 20
 }
 
 export const tilesContainer = {
@@ -39,7 +32,6 @@ export const tileContentContainer = {
 }
 
 export const tileText = {
-  ...fontColorStyle,
   fontSize: 10,
   textAlign: 'center'
 }
