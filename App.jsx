@@ -56,6 +56,11 @@ export default function App() {
     setCaughtFish(updatedCaughtFish)
   }
 
+  const handleThemeSelection = async theme => {
+    await AsyncStorage.setItem('theme', theme)
+    setTheme(theme)
+  }
+
   const [fontsLoaded] = useFonts({
     'ffFont': require('./assets/misc/OPTIEngeEtienne.otf'),
   });
@@ -91,7 +96,7 @@ export default function App() {
 
   return (
     <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
-      <UserContext.Provider value={{ user, caughtFish, theme, handleLongPressFish, getUserInfo, setTheme }}>
+      <UserContext.Provider value={{ user, caughtFish, theme, handleLongPressFish, getUserInfo, handleThemeSelection }}>
         <NavigationContainer theme={customReactNavigationTheme} >
           <SafeAreaView style={{
             ...styles.container,

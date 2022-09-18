@@ -11,7 +11,7 @@ export default ThemedDropdown = ({ dataArray, onSelect, selected, defaultText, b
       buttonStyle={{...styles.serverDropdown, borderColor: THEME[theme].FONT }}
       buttonTextStyle={{...styles.serverText, color: THEME[theme].FONT}}
       data={dataArray}
-      defaultButtonText={selected || defaultText}
+      defaultButtonText={defaultText}
       onSelect={onSelect}
       buttonTextAfterSelection={buttonTextFunction ? buttonTextFunction : () => selected}
       rowTextForSelection={rowTextFunction ? rowTextFunction : item => item}

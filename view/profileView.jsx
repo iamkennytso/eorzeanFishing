@@ -12,7 +12,7 @@ import ThemedDropdown from '../components/ThemedDropdown';
 
 export default function ProfileView({ navigation }) {
   const [loading, setLoading] = useState(false);
-  const { user, getUserInfo, caughtFish, theme, setTheme } = useContext(UserContext)
+  const { user, getUserInfo, caughtFish, theme, handleThemeSelection } = useContext(UserContext)
   const { avatarUrl, name, server, level, id } = user || {};
 
   const handleRefreshUserData = async () => {
@@ -100,7 +100,7 @@ export default function ProfileView({ navigation }) {
       <ThemedText style={subtitleStyles}>Theme Select</ThemedText>
       <ThemedDropdown 
         dataArray={[DARK, LIGHT, CLASSIC]} 
-        onSelect={setTheme} 
+        onSelect={handleThemeSelection} 
         selected={theme} 
         defaultText={themeTextMapping[theme]} 
         buttonTextFunction={theme => themeTextMapping[theme]}
