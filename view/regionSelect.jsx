@@ -1,9 +1,9 @@
-import { View, StyleSheet, Text, Image, ScrollView, TouchableHighlight  } from 'react-native';
+import { View, StyleSheet, Text, Image, ScrollView  } from 'react-native';
 import { regionsData } from '../data';
 import { ABOUT_VIEW, AREA_SELECT, FISH_GUIDE, PROFILE_VIEW } from '../const/views';
 import TouchableGradient from '../components/TouchableGradient';
 import { titleStyles, subtitleStyles } from '../styles/styles'
-import { BLUE_FONT } from '../styles/variables';
+import ThemedText from '../components/ThemedText';
 
 export default function RegionSelect({ navigation }) {
   return <>
@@ -21,7 +21,7 @@ export default function RegionSelect({ navigation }) {
           customGradientStyles={{ width: 22 }}
           onPress={() => navigation.navigate(ABOUT_VIEW)}
         >
-          <Text style={styles.infoText}>ⓘ</Text>
+          <ThemedText style={styles.infoText}>ⓘ</ThemedText>
         </TouchableGradient>
       </View>
     </View>
@@ -31,7 +31,7 @@ export default function RegionSelect({ navigation }) {
           onPress={() => navigation.navigate(AREA_SELECT, { region })}
           customGradientStyles={styles.regionGradient}
         >
-          <Text style={subtitleStyles}>{region}</Text>
+          <ThemedText style={subtitleStyles}>{region}</ThemedText>
         </TouchableGradient>
       </View>)}
       <TouchableGradient
@@ -40,7 +40,7 @@ export default function RegionSelect({ navigation }) {
       >
         <View style={styles.fishGuideContainer}>
           <Image style={styles.fishGuideIcon} source={require('../assets/misc/fishGuide.png')} />
-          <Text style={subtitleStyles}>  Fish Guide</Text>
+          <ThemedText style={subtitleStyles}>  Fish Guide</ThemedText>
         </View>
       </TouchableGradient>
     </ScrollView>
@@ -66,11 +66,11 @@ const styles = StyleSheet.create({
   },
   iconsContainer: {
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   infoText: {
-    fontSize: 20,
-    color: BLUE_FONT
+    fontSize: 20
   },
   regionContainer: {
     marginTop: 8,

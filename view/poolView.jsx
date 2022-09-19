@@ -1,4 +1,4 @@
-import { View, StyleSheet, Text, Image, ScrollView, Linking } from 'react-native';
+import { View, StyleSheet, Image, ScrollView, Linking } from 'react-native';
 import { FISH_VIEW } from '../const/views';
 import { fishesData } from '../data';
 import idToImageMap from '../util/idToImageMap';
@@ -7,7 +7,8 @@ import { titleStyles, subtitleStyles, tilesContainer, tileContainer, tileContent
 import getGamerEscapeURL from '../util/getGamerEscapeURL';
 import { useContext } from 'react';
 import { UserContext } from '../util/context';
-import { GREEN_GRADIENT_COLORS } from '../styles/variables';
+import { PRIMARY, SECONDARY } from '../styles/variables';
+import ThemedText from '../components/ThemedText';
 
 
 export default function PoolView({ navigation, route }) {
@@ -17,9 +18,9 @@ export default function PoolView({ navigation, route }) {
 
   return <ScrollView>
     <Image style={styles.poolImage} source={{uri: `https://ffxiv.gamerescape.com/${image}`}} />
-    <Text style={titleStyles}>{name}</Text>
+    <ThemedText style={titleStyles}>{name}</ThemedText>
     <View style={styles.poolLevelLinkContainer}>
-      <Text style={subtitleStyles}>Pool Level: {level}</Text>
+      <ThemedText style={subtitleStyles}>Pool Level: {level}</ThemedText>
       <TouchableGradient customGradientStyles={customLinkGradient} customHighlightStyles={customLinkGradient} onPress={() => Linking.openURL(getGamerEscapeURL(name))}>
         <Image source={require('../assets/misc/gamerEscape.jpg')} style={styles.linkImage} />
       </TouchableGradient>
@@ -28,14 +29,14 @@ export default function PoolView({ navigation, route }) {
       {[0, 1, 2, 3, 4].map(idx => <View style={tileContainer} key={idx}>
         {fish[idx] ?
           <TouchableGradient
-            gradientColors={caughtFish[fish[idx]] ? GREEN_GRADIENT_COLORS : undefined}
+            gradientVariant={caughtFish[fish[idx]] ? SECONDARY : PRIMARY}
             customGradientStyles={customTileGradient}
             onLongPress={() => handleLongPressFish(fish[idx])}
             onPress={() => navigation.navigate(FISH_VIEW, { fish: fishesData[fish[idx]] })}
           >
             <View style={tileContentContainer}>
               <Image source={idToImageMap[fish[idx]]} />
-              <Text style={tileText}>{fishesData[fish[idx]].name}</Text>
+              <ThemedText style={tileText}>{fishesData[fish[idx]].name}</ThemedText>
             </View>
           </TouchableGradient>
           : null}
@@ -45,14 +46,14 @@ export default function PoolView({ navigation, route }) {
       {[5, 6, 7, 8, 9].map(idx => <View style={tileContainer} key={idx}>
         {fish[idx] ?
           <TouchableGradient
-            gradientColors={caughtFish[fish[idx]] ? GREEN_GRADIENT_COLORS : undefined}
+          gradientVariant={caughtFish[fish[idx]] ? SECONDARY : PRIMARY}
             customGradientStyles={customTileGradient}
             onLongPress={() => handleLongPressFish(fish[idx])}
             onPress={() => navigation.navigate(FISH_VIEW, { fish: fishesData[fish[idx]] })}
           >
             <View style={tileContentContainer}>
               <Image source={idToImageMap[fish[idx]]} />
-              <Text style={tileText}>{fishesData[fish[idx]].name}</Text>
+              <ThemedText style={tileText}>{fishesData[fish[idx]].name}</ThemedText>
             </View>
           </TouchableGradient>
           : null}

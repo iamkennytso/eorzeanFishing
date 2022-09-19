@@ -1,4 +1,4 @@
-import { View, StyleSheet, Text, Image, ScrollView  } from 'react-native';
+import { View, StyleSheet, Image, ScrollView  } from 'react-native';
 import { FISH_VIEW } from '../const/views';
 import { fishesData, baitProcure } from '../data';
 import { titleStyles, subtitleStyles, fontColorStyle, tilesContainer, customTileGradient, tileContainer, tileContentContainer, tileText } from '../styles/styles'
@@ -6,7 +6,8 @@ import TouchableGradient from '../components/TouchableGradient';
 import idToImageMap from '../util/idToImageMap';
 import { useContext } from 'react';
 import { UserContext } from '../util/context';
-import { GREEN_GRADIENT_COLORS } from '../styles/variables';
+import { PRIMARY, SECONDARY } from '../styles/variables';
+import ThemedText from '../components/ThemedText';
 
 export default function BaitView({ route, navigation }) {
   const { bait } = route.params;
@@ -17,33 +18,33 @@ export default function BaitView({ route, navigation }) {
     <View style={styles.imageContainer}>
       <Image style={styles.fishImage} source={{uri: `https://xivapi.com${bait.iconURL}`}} />
     </View>
-    <Text style={titleStyles}>{name}</Text>
-    <Text style={styles.fishSubtitle}>Item Level: {level}</Text>
-    <Text style={subtitleStyles}>Description:</Text>
-    <Text style={fontColorStyle}>{description}</Text>
-    <Text style={styles.fishSubtitle}>Fish:</Text>
+    <ThemedText style={titleStyles}>{name}</ThemedText>
+    <ThemedText style={styles.fishSubtitle}>Item Level: {level}</ThemedText>
+    <ThemedText style={subtitleStyles}>Description:</ThemedText>
+    <ThemedText style={fontColorStyle}>{description}</ThemedText>
+    <ThemedText style={styles.fishSubtitle}>Fish:</ThemedText>
     <View style={tilesContainer}>
       {fishes.map(fishID => <View style={tileContainer} key={fishID}>
         <TouchableGradient
-          gradientColors={caughtFish[fishID] ? GREEN_GRADIENT_COLORS : undefined}
+          gradientVariant={caughtFish[fishID] ? SECONDARY : PRIMARY}
           customGradientStyles={customTileGradient}
           onLongPress={() => handleLongPressFish(fishID)}
           onPress={() => navigation.navigate(FISH_VIEW, { fish: fishesData[fishID] } )}
         >
           <View style={tileContentContainer}> 
             <Image source={idToImageMap[fishID]} />
-            <Text style={tileText}>{fishesData[fishID].name}</Text>
+            <ThemedText style={tileText}>{fishesData[fishID].name}</ThemedText>
           </View>
         </TouchableGradient>
       </View>)}
     </View>
-    <Text style={styles.fishSubtitle}>Aquisition:</Text>
+    <ThemedText style={styles.fishSubtitle}>Aquisition:</ThemedText>
     <View style={tilesContainer}>
       {acquisition.map(acquisitionID => <View 
         style={styles.baitProcureContainer} 
         key={acquisitionID}
       >
-        <Text style={tileText}>{baitProcure[acquisitionID]}</Text>
+        <ThemedText style={tileText}>{baitProcure[acquisitionID]}</ThemedText>
       </View>)}
     </View>
   </ScrollView>
