@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "FFXIV Fishing Buddy",
-    "slug": "ffxiv-fishing-buddy",
+    "name": "Eorzean Fishing",
+    "slug": "eorzean-fishing",
     "owner": "hardnecksolutions",
     "version": "1.0.1",
     "orientation": "portrait",
@@ -21,22 +21,20 @@
     "ios": {
       "supportsTablet": false,
       "icon": "./assets/misc/fullIcon.png",
-      "bundleIdentifier": "com.hardneckSolutions.ffxivFishingBuddy",
-      "infoPlist": {}
+      "bundleIdentifier": "com.hardneckSolutions.eorzeanFishing",
+      "infoPlist": {},
+      "buildNumber": "5"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/misc/iconForeground.png",
         "backgroundImage": "./assets/misc/iconBackground.png"
       },
-      "package": "com.hardneckSolutions.ffxivFishingBuddy",
+      "package": "com.hardneckSolutions.eorzeanFishing",
       "permissions": []
     },
     "web": {
       "favicon": "./assets/misc/fullIcon.png"
-    },
-    "plugins": [
-      "expo-tracking-transparency"
-    ]
+    }
   }
 }
