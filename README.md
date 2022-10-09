@@ -1,10 +1,10 @@
 # Eorzean Fishing
 
-Open Source project for easy to access information on Final Fantasy 14's fishing.
+Open Source project for easy to access information on Final Fantasy 14's fishing. Currently only contains ARR information.
 
 Android Play Store Status: In Review
 
-Apple App Store Status: In Review
+Apple App Store Status: [Live](https://apps.apple.com/app/id1643096420) 1.0.1
 
 ## Development
 

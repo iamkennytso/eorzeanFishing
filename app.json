@@ -21,16 +21,16 @@
     "ios": {
       "supportsTablet": false,
       "icon": "./assets/misc/fullIcon.png",
-      "bundleIdentifier": "com.hardneckSolutions.eorzeanFishing",
+      "bundleIdentifier": "com.hardneckSolutions.ffxivFishingBuddy",
       "infoPlist": {},
-      "buildNumber": "5"
+      "buildNumber": "6"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/misc/iconForeground.png",
         "backgroundImage": "./assets/misc/iconBackground.png"
       },
-      "package": "com.hardneckSolutions.eorzeanFishing",
+      "package": "com.hardneckSolutions.ffxivFishingBuddy",
       "permissions": []
     },
     "web": {
