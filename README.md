@@ -2,6 +2,8 @@
 
 Open Source project for easy to access information on Final Fantasy 14's fishing. Currently only contains ARR information.
 
+Biggest Support we need right now is updating the app to include fish past ARR.
+
 Android Play Store Status: In Review
 
 Apple App Store Status: [Live](https://apps.apple.com/app/id1643096420) 1.0.1
