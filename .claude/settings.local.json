@@ -4,7 +4,9 @@
       "Bash(npx expo --version)",
       "Bash(npm install:*)",
       "Bash(npx expo-doctor)",
-      "Bash(npx expo install:*)"
+      "Bash(npx expo install:*)",
+      "Bash(npm outdated:*)",
+      "Bash(npm audit:*)"
     ]
   }
 }
