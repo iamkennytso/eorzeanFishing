@@ -6,7 +6,24 @@
       "Bash(npx expo-doctor)",
       "Bash(npx expo install:*)",
       "Bash(npm outdated:*)",
-      "Bash(npm audit:*)"
+      "Bash(npm audit:*)",
+      "Bash(npx expo start:*)",
+      "Bash(timeout:*)",
+      "Bash(npm test:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(del App.test.jsx)",
+      "Bash(del:*)",
+      "Bash(npx detox:*)",
+      "Bash(test:*)",
+      "Bash(curl:*)",
+      "Bash(bash)",
+      "Bash(java:*)",
+      "Bash(choco --version:*)",
+      "Bash(winget install:*)",
+      "Bash(where:*)",
+      "Bash(maestro --version:*)",
+      "Bash(export PATH=\"$PATH:$HOME/.maestro/maestro/bin\")",
+      "Bash(maestro test:*)"
     ]
   }
 }

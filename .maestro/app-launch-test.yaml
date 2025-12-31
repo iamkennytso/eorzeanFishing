@@ -1,0 +1,7 @@
+appId: host.exp.Exponent
+---
+- launchApp
+- assertVisible: "RegionSelect"
+- assertVisible: "La Noscea"
+- assertVisible: "The Black Shroud"
+- assertVisible: "Thanalan"
