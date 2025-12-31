@@ -7,6 +7,7 @@ import { fishesData } from '../data';
 import { FISH_VIEW } from '../const/views';
 import { UserContext } from '../util/context';
 import ThemedText from '../components/ThemedText';
+import TouchableGradient from '../components/TouchableGradient';
 
 const lastPage = Math.ceil(fishIdxToId.length / 25) - 1
 

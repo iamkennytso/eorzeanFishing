@@ -1,4 +1,4 @@
-export default getGamerEscapeURL = poolName => {
+const getGamerEscapeURL = poolName => {
   switch (poolName) {
     case 'Doma Castle':
     case 'Haukke Manor':
@@ -9,3 +9,5 @@ export default getGamerEscapeURL = poolName => {
       return `https://ffxiv.gamerescape.com/wiki/Fishing_Log:_${poolName.replace(' ','_')}`
   }
 }
+
+export default getGamerEscapeURL;

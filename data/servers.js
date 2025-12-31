@@ -1,4 +1,4 @@
-export default servers = [
+const servers = [
   "Adamantoise",
   "Aegis",
   "Alexander",
@@ -106,3 +106,5 @@ export default servers = [
   "Raiden",
   "Sagittarius"
 ]
+
+export default servers;

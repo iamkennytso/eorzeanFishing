@@ -5,7 +5,7 @@ import { THEME } from '../styles/themes';
 import { PRIMARY } from '../styles/variables';
 import { UserContext } from '../util/context';
 
-export default TouchableGradient = ({ children, onPress, onLongPress = () => null, customHighlightStyles = {}, customGradientStyles = {}, gradientVariant = PRIMARY }) => {
+const TouchableGradient = ({ children, onPress, onLongPress = () => null, customHighlightStyles = {}, customGradientStyles = {}, gradientVariant = PRIMARY }) => {
   const { theme } = useContext(UserContext);
   const gradientColors = THEME[theme][`${gradientVariant}_GRADIENT`];
 
@@ -26,3 +26,5 @@ const styles = StyleSheet.create({
     borderWidth: 1
   }
 })
+
+export default TouchableGradient;
