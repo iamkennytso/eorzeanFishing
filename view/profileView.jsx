@@ -9,6 +9,7 @@ import { poolsData } from '../data';
 import ThemedText from '../components/ThemedText';
 import { CLASSIC, DARK, LIGHT, THEME } from '../styles/themes';
 import ThemedDropdown from '../components/ThemedDropdown';
+import TouchableGradient from '../components/TouchableGradient';
 
 export default function ProfileView({ navigation }) {
   const [loading, setLoading] = useState(false);
@@ -66,7 +67,7 @@ export default function ProfileView({ navigation }) {
             color={THEME[theme].FONT}
           />
         </TouchableGradient>
-        {user &&<TouchableGradient  onPress={() => handleRefreshUserData()}>
+        {user && <TouchableGradient onPress={() => handleRefreshUserData()}>
           <Icon
             name='autorenew'
             size={36}
@@ -77,20 +78,20 @@ export default function ProfileView({ navigation }) {
     </View>
     {loading && <ActivityIndicator size='large' color={THEME[theme].FONT} />}
     <View style={styles.propertyContainer}>
-      <ThemedText style={styles.propertyText}>Name:</ThemedText> 
+      <ThemedText style={styles.propertyText}>Name:</ThemedText>
       <ThemedText style={styles.propertyText}>{name || '--'}</ThemedText>
     </View>
     <View style={styles.propertyContainer}>
-      <ThemedText style={styles.propertyText}>Server:</ThemedText> 
+      <ThemedText style={styles.propertyText}>Server:</ThemedText>
       <ThemedText style={styles.propertyText}>{server || '--'}</ThemedText>
     </View>
     <View style={styles.propertyContainer}>
-      <ThemedText style={styles.propertyText}>Level:</ThemedText> 
+      <ThemedText style={styles.propertyText}>Level:</ThemedText>
       <ThemedText style={styles.propertyText}>{level || '--'}</ThemedText>
     </View>
     {suggestedPool && <View style={styles.suggestedPoolContainer}>
-      <TouchableGradient 
-        onPress={() => navigation.navigate(POOL_VIEW, {poolData: poolsData[suggestedPool]})}
+      <TouchableGradient
+        onPress={() => navigation.navigate(POOL_VIEW, { poolData: poolsData[suggestedPool] })}
         customGradientStyles={{ padding: 10 }}
       >
         <ThemedText style={styles.suggestedPoolText}>Suggested Fishing Pool</ThemedText>
@@ -98,11 +99,11 @@ export default function ProfileView({ navigation }) {
     </View>}
     <View>
       <ThemedText style={subtitleStyles}>Theme Select</ThemedText>
-      <ThemedDropdown 
-        dataArray={[DARK, LIGHT, CLASSIC]} 
-        onSelect={handleThemeSelection} 
-        selected={theme} 
-        defaultText={themeTextMapping[theme]} 
+      <ThemedDropdown
+        dataArray={[DARK, LIGHT, CLASSIC]}
+        onSelect={handleThemeSelection}
+        selected={theme}
+        defaultText={themeTextMapping[theme]}
         buttonTextFunction={theme => themeTextMapping[theme]}
         rowTextFunction={theme => themeTextMapping[theme]}
       />

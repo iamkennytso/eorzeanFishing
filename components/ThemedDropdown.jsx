@@ -4,7 +4,7 @@ import SelectDropdown from 'react-native-select-dropdown'
 import { THEME } from '../styles/themes';
 import { UserContext } from '../util/context';
 
-export default ThemedDropdown = ({ dataArray, onSelect, selected, defaultText, buttonTextFunction, rowTextFunction }) => {
+const ThemedDropdown = ({ dataArray, onSelect, selected, defaultText, buttonTextFunction, rowTextFunction }) => {
   const { theme } = useContext(UserContext)
   return <View style={styles.dropdownContainer}>
     <SelectDropdown
@@ -34,3 +34,5 @@ const styles = StyleSheet.create({
     fontSize: 20
   }
 });
+
+export default ThemedDropdown;

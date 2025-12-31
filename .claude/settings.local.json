@@ -23,7 +23,14 @@
       "Bash(where:*)",
       "Bash(maestro --version:*)",
       "Bash(export PATH=\"$PATH:$HOME/.maestro/maestro/bin\")",
-      "Bash(maestro test:*)"
+      "Bash(maestro test:*)",
+      "Bash(choco install:*)",
+      "Bash(powershell.exe -Command \"choco --version\")",
+      "Bash(adb:*)",
+      "Bash(npm start)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(taskkill:*)"
     ]
   }
 }

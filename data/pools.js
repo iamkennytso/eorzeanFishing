@@ -1,4 +1,4 @@
-export default pools = {
+const pools = {
   1: { "name": "unknown", "fish": [4869, 4885] },
   2: { "name": "The Vein", "fish": [4925, 4927, 4932, 4934, 4935, 4936, 4952, 7705], "image": "/w/images/e/ec/The_Vein-Fishing.jpg", "level": 5, "type": 0 },
   3: { "name": "The Mirror", "fish": [4929, 4932, 4934, 4935, 4936, 4947, 4951, 7700], "image": "/w/images/0/0c/The_Mirror-Fishing.jpg", "level": 15, "type": 0 },
@@ -244,3 +244,5 @@ export const poolLevelToIdToFish = {
     "115": [4937]
   }, "53": { "114": [4937] }, "54": { "129": [5544] }, "60": { "112": [4937] }
 }
+
+export default pools;
