@@ -1,9 +1,0 @@
-export const REGION_SELECT = 'RegionSelect';
-export const AREA_SELECT = 'AreaSelect';
-export const POOL_VIEW = 'PoolView';
-export const FISH_VIEW = 'FishView';
-export const BAIT_VIEW = 'BaitView';
-export const FISH_GUIDE = 'FishGuide';
-export const ABOUT_VIEW = 'AboutView';
-export const PROFILE_VIEW = 'ProfileView';
-export const PROFILE_SEARCH = 'ProfileSearch';

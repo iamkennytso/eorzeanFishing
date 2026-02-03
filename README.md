@@ -1,27 +1,62 @@
 # Eorzean Fishing
 
-Open Source project for easy to access information on Final Fantasy 14's fishing. Currently only contains ARR information.
+A React Native app providing easy access to Final Fantasy XIV fishing information.
 
-Android Play Store Status: In Review
+**Currently supports**: A Realm Reborn (ARR) content
 
-Apple App Store Status: [Live](https://apps.apple.com/app/id1643096420) 1.0.1
+## Status
+
+- **iOS**: [Live on App Store](https://apps.apple.com/app/id1643096420) (v1.0.1)
+- **Android**: In Review
+
+## Quick Start
+
+```bash
+npm install
+npm start
+```
+
+Then press `a` for Android, `i` for iOS, or `w` for web.
+
+## Tech Stack
+
+- React Native with Expo
+- TypeScript (strict mode)
+- Zustand for state management
+- React Query for API calls
+- Full accessibility support
+
+## Documentation
+
+- [Quick Start Guide](docs/QUICK_START.md)
+- [Contributing Guidelines](docs/CONTRIBUTING.md)
+- [Support](docs/SUPPORT.md)
 
 ## Development
 
-Build with React Native and Expo.
+```bash
+npm run type-check  # TypeScript validation
+npm run lint        # ESLint
+npm test            # Jest tests
+```
 
-Install dependancies with `npm install`
-Start with `expo start`
+## Project Structure
 
-## Support
+```
+src/
+├── api/           # API layer with React Query
+├── data/          # Game data (fish, pools, baits, locations, servers)
+├── features/      # Feature modules (fishing, profile, theme)
+├── shared/        # Shared components and utilities
+├── store/         # Zustand state management
+├── types/         # TypeScript definitions
+└── util/          # Utility functions (imageMap)
 
-Please view the support document at [Support](docs/SUPPORT.md)
-
-## Upcoming
-
-More in depth read me to come, please check [CONTRIBUTING](docs/CONTRIBUTING.md) for now.
+assets/            # Images and fonts
+```
 
 ## Credits
+
 FINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd.
 
 All in-game graphics are property of SQUARE ENIX CO., LTD. All Rights Reserved.

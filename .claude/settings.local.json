@@ -30,7 +30,19 @@
       "Bash(npm start)",
       "Bash(netstat:*)",
       "Bash(findstr:*)",
-      "Bash(taskkill:*)"
+      "Bash(taskkill:*)",
+      "Bash(powershell.exe -Command \"\\(Get-ChildItem -Path ''c:\\\\Users\\\\iamke\\\\Documents\\\\GitHub\\\\eorzeanFishing\\\\assets\\\\ids'' -Recurse | Measure-Object -Property Length -Sum\\).Sum / 1MB\")",
+      "Bash(powershell.exe -Command \"Get-ChildItem -Path ''c:\\\\Users\\\\iamke\\\\Documents\\\\GitHub\\\\eorzeanFishing\\\\assets\\\\ids'' | Measure-Object | Select-Object -ExpandProperty Count\")",
+      "Bash(powershell.exe -Command:*)",
+      "Bash(git checkout:*)",
+      "Bash(node -e:*)",
+      "Bash(grep:*)",
+      "Bash(npm run type-check:*)",
+      "Bash(cat:*)",
+      "Bash(ls:*)",
+      "Bash(git -C /c/Users/iamke/Documents/GitHub/eorzeanFishing log --all --oneline --grep=\"maestro\")",
+      "Bash(git config:*)",
+      "Bash(git add:*)"
     ]
   }
 }

@@ -1,31 +1,54 @@
+# Contributing
 
-### Hello FFXIV Anglers! Thanks for taking interest in this project and considering contributing to it. Feel free to make an issue or even a pull request! It's the community that drives this forward and inspires me.
+Thanks for your interest in contributing to Eorzean Fishing! This project is driven by the FFXIV community's passion for fishing.
 
-### Following these guidelines helps to communicate that you respect the time of the developers managing and developing this open source project. In return, they should reciprocate that respect in addressing your issue, assessing changes, and helping you finalize your pull requests. We're all here out of our passion for FFXIV and fishing, so let's give each other the benefit of the doubt.
+## Before You Start
 
-### If you're not sure where to start, documentation can always use work! You can also visit the issue board to see what people are requesting.
+- Check existing issues before creating a new one
+- Review open pull requests to avoid duplicate work
+- Break large features into smaller, focused PRs
 
-### Please read the existing issues before creating another one. If you're ready to make a pull request (PR), check to make sure what your PR covers isn't already covered by another PR, and that your PR isn't too encompassing.
+## Guidelines
 
-## Responsibilities
-## * Ensure cross-platform compatibility for every change that's accepted, mainly iOS and Android for now.
-## * Ensure that code you're commiting is commented and clean. We're aiming for functional programming here.
-## * Create issues for any major changes and enhancements that you wish to make. Discuss things transparently and get community feedback.
+### Code Quality
+- Ensure cross-platform compatibility (iOS, Android)
+- Write clean, well-commented TypeScript code
+- Follow existing code patterns and conventions
+- Run `npm run type-check` and `npm run lint` before committing
 
-## * Keep your pull requests as small as possible. The less code there is to review, the faster it can get merged in. Break features into multiple PRs.
-## * Be welcoming to newcomers and encourage contributors from all backgrounds. See the [Python Community Code of Conduct](https://www.python.org/psf/codeofconduct/).
+### Pull Requests
+1. Fork the repository
+2. Create a feature branch from `dev`
+3. Make your changes with clear, descriptive commits
+4. Test on at least one platform (iOS/Android/Web)
+5. Submit PR to the `dev` branch
+6. Address any review comments
 
+### PR Checklist
+- [ ] Code is TypeScript with proper types
+- [ ] No TypeScript errors (`npm run type-check`)
+- [ ] No ESLint errors (`npm run lint`)
+- [ ] Tested on at least one platform
+- [ ] Accessibility considered (screen readers, labels)
+- [ ] Comments added for complex logic
+- [ ] 3rd party code properly attributed
 
-### Working on your first pull request? You can learn how from this *free* series, [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github).
+## Project Standards
 
+**TypeScript**: Use strict mode, avoid `any` types
+**State**: Use Zustand hooks (`useUser`, `useTheme`, `useCaughtFish`)
+**API Calls**: Use React Query hooks from `src/api/hooks/`
+**Components**: Add accessibility props (`accessibilityLabel`, `accessibilityHint`)
+**Styling**: Use theme values from `src/features/theme/themes.ts`
 
-## To contribute code
-## 1. Create your own fork of the code
-## 2. Do the changes in your fork
-## 3. If you like the change and think the project could use it:
-    * Make sure your code is commented and easy to read.
-    * Attribute any 3rd parties as necessary.
-    * Create your pull request to the appropriate place.
-## 4. Create a PR from your branch to the repo's `dev` branch
+## First Time Contributing?
 
-## 5. Address PR comments, if any, and then your branch should be ready to be merged!
+Learn from this free series: [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)
+
+## Code of Conduct
+
+Be welcoming and respectful. See the [Python Community Code of Conduct](https://www.python.org/psf/codeofconduct/) for guidance.
+
+## Questions?
+
+Open an issue or check [SUPPORT.md](SUPPORT.md) for help.
